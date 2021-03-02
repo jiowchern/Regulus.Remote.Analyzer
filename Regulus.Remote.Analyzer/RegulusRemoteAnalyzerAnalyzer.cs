@@ -8,9 +8,39 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Threading;
 
+
+
 namespace Regulus.Remote.Analyzer
 {
-    [DiagnosticAnalyzer(LanguageNames.CSharp)]
+    internal static class SymbolExtensions
+    {
+        internal static bool ContainsAttributeType(this ImmutableArray<AttributeData> attributes, INamedTypeSymbol attributeType, bool exactMatch = false)
+            => attributes.Any(a => attributeType.IsAssignableFrom(a.AttributeClass, exactMatch));
+
+        internal static bool IsAssignableFrom(this INamedTypeSymbol targetType, INamedTypeSymbol sourceType, bool exactMatch = false)
+        {
+            if (targetType != null)
+            {
+                while (sourceType != null)
+                {
+                    
+                    if (Equals(sourceType, targetType))
+                        return true;
+
+                    if (exactMatch)
+                        return false;
+
+                    if (targetType.TypeKind == TypeKind.Interface)
+                        return sourceType.AllInterfaces.Any(i => i.Equals(targetType));
+
+                    sourceType = sourceType.BaseType;
+                }
+            }
+
+            return false;
+        }
+    }
+        [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class RegulusRemoteAnalyzerAnalyzer : DiagnosticAnalyzer
     {
         public const string DiagnosticId = "RegulusRemoteAnalyzer";
@@ -23,17 +53,64 @@ namespace Regulus.Remote.Analyzer
         private const string Category = "Naming";
 
         private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
+        private INamedTypeSymbol _NameType;
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(Rule); } }
 
         public override void Initialize(AnalysisContext context)
         {
-            context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
+            context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.ReportDiagnostics);
             context.EnableConcurrentExecution();
-
+            
             // TODO: Consider registering other actions that act on syntax instead of or in addition to symbols
             // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/Analyzer%20Actions%20Semantics.md for more information
-            context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.NamedType);
+            //context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.NamedType);
+            context.RegisterCompilationStartAction(c => {
+                _NameType = c.Compilation.GetTypeByMetadataName("Regulus.Remote.Syntax.InterfaceAttribute");
+                context.RegisterSymbolAction(_MethodAnalyze, SymbolKind.Method);
+                context.RegisterSymbolAction(_NameAnalyze, SymbolKind.NamedType);
+            });
+            
+        }
+
+        private void _NameAnalyze(SymbolAnalysisContext context)
+        {            
+            /*var valueType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
+            var notifierType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Notifier`1");
+            var propertyType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Property`1");
+            var voidType = context.Compilation.GetTypeByMetadataName("System.Void");*/
+            var symbol = (INamedTypeSymbol)context.Symbol;
+            var attrs = symbol.GetAttributes();
+            if (!attrs.ContainsAttributeType(_NameType))
+                return;
+            /*if (_ReturnTypeCheck(symbol))
+            {
+                return;
+            }*/
+        }
+
+        private void _MethodAnalyze(SymbolAnalysisContext context)
+        {            
+            
+            /*var valueType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
+            var notifierType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Notifier`1");
+            var propertyType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Property`1");
+            var voidType = context.Compilation.GetTypeByMetadataName("System.Void");*/
+            var symbol = (IMethodSymbol)context.Symbol;            
+            var attrs = symbol.ReceiverType.GetAttributes();
+            if (!attrs.ContainsAttributeType(_NameType))
+                return;
+            if(_ReturnTypeCheck(symbol))
+            {
+                return;
+            }
+            
+        }
+
+        private bool _ReturnTypeCheck(IMethodSymbol symbol)
+        {
+            var retType = symbol.ReturnType;
+            return true;
         }
 
         private static void AnalyzeSymbol(SymbolAnalysisContext context)

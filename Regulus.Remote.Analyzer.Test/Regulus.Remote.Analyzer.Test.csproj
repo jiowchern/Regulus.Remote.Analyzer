@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Regulus.Remote.Analyzer.CodeFixes\Regulus.Remote.Analyzer.CodeFixes.csproj" />
     <ProjectReference Include="..\Regulus.Remote.Analyzer\Regulus.Remote.Analyzer.csproj" />
+    <ProjectReference Include="..\Regulus\Regulus.Remote\Regulus.Remote.csproj" />
   </ItemGroup>
 
 </Project>

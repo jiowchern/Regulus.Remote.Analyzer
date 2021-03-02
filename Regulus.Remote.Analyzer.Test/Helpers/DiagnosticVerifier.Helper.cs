@@ -19,6 +19,14 @@ namespace TestHelper
         private static readonly MetadataReference SystemCoreReference = MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location);
         private static readonly MetadataReference CSharpSymbolsReference = MetadataReference.CreateFromFile(typeof(CSharpCompilation).Assembly.Location);
         private static readonly MetadataReference CodeAnalysisReference = MetadataReference.CreateFromFile(typeof(Compilation).Assembly.Location);
+        private static readonly MetadataReference RegulusUtilityReference = MetadataReference.CreateFromFile(typeof(Regulus.Utility.IBootable).Assembly.Location);
+        private static readonly MetadataReference RegulusNetworkReference = MetadataReference.CreateFromFile(typeof(Regulus.Network.IConnectable).Assembly.Location);
+        private static readonly MetadataReference RegulusRemoteSyntaxInterfaceAttributeReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Syntax.InterfaceAttribute).Assembly.Location);
+        //private static readonly MetadataReference RegulusRemoteValueReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Value<>).Assembly.Location);
+        //private static readonly MetadataReference RegulusRemotePropertyReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Property<>).Assembly.Location);
+        //private static readonly MetadataReference RegulusRemoteNotifierReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Notifier<>).Assembly.Location);
+
+        
 
         internal static string DefaultFilePathPrefix = "Test";
         internal static string CSharpDefaultFileExt = "cs";
@@ -57,7 +65,8 @@ namespace TestHelper
             var diagnostics = new List<Diagnostic>();
             foreach (var project in projects)
             {
-                var compilationWithAnalyzers = project.GetCompilationAsync().Result.WithAnalyzers(ImmutableArray.Create(analyzer));
+                var compilationResult =  project.GetCompilationAsync().Result;
+                var compilationWithAnalyzers = compilationResult.WithAnalyzers(ImmutableArray.Create(analyzer));
                 var diags = compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync().Result;
                 foreach (var diag in diags)
                 {
@@ -152,7 +161,14 @@ namespace TestHelper
                 .AddMetadataReference(projectId, CorlibReference)
                 .AddMetadataReference(projectId, SystemCoreReference)
                 .AddMetadataReference(projectId, CSharpSymbolsReference)
-                .AddMetadataReference(projectId, CodeAnalysisReference);
+                .AddMetadataReference(projectId, CodeAnalysisReference)
+                //.AddMetadataReference(projectId, RegulusRemoteValueReference)
+                //.AddMetadataReference(projectId, RegulusRemotePropertyReference)
+                //.AddMetadataReference(projectId, RegulusRemoteNotifierReference)
+                .AddMetadataReference(projectId, RegulusUtilityReference)
+                .AddMetadataReference(projectId, RegulusNetworkReference)
+                .AddMetadataReference(projectId, RegulusRemoteSyntaxInterfaceAttributeReference)
+                ;
 
             int count = 0;
             foreach (var source in sources)
