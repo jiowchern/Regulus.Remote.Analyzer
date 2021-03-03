@@ -19,6 +19,7 @@ namespace Regulus.Remote.Analyzer
 
         internal static bool IsAssignableFrom(this INamedTypeSymbol targetType, INamedTypeSymbol sourceType, bool exactMatch = false)
         {
+            
             if (targetType != null)
             {
                 while (sourceType != null)
@@ -66,7 +67,7 @@ namespace Regulus.Remote.Analyzer
             // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/Analyzer%20Actions%20Semantics.md for more information
             //context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.NamedType);
             context.RegisterCompilationStartAction(c => {
-                _NameType = c.Compilation.GetTypeByMetadataName("Regulus.Remote.Syntax.InterfaceAttribute");
+                _NameType = c.Compilation.GetTypeByMetadataName("Regulus.Remote.Syntax.CheckInterfaceAttribute");
                 context.RegisterSymbolAction(_MethodAnalyze, SymbolKind.Method);
                 context.RegisterSymbolAction(_NameAnalyze, SymbolKind.NamedType);
             });

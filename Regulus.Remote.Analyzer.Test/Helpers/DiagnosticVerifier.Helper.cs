@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Reflection;
 
 namespace TestHelper
 {
@@ -21,7 +22,7 @@ namespace TestHelper
         private static readonly MetadataReference CodeAnalysisReference = MetadataReference.CreateFromFile(typeof(Compilation).Assembly.Location);
         private static readonly MetadataReference RegulusUtilityReference = MetadataReference.CreateFromFile(typeof(Regulus.Utility.IBootable).Assembly.Location);
         private static readonly MetadataReference RegulusNetworkReference = MetadataReference.CreateFromFile(typeof(Regulus.Network.IConnectable).Assembly.Location);
-        private static readonly MetadataReference RegulusRemoteSyntaxInterfaceAttributeReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Syntax.InterfaceAttribute).Assembly.Location);
+        private static readonly MetadataReference RegulusRemoteSyntaxInterfaceAttributeReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Syntax.CheckInterfaceAttribute).Assembly.Location);
         //private static readonly MetadataReference RegulusRemoteValueReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Value<>).Assembly.Location);
         //private static readonly MetadataReference RegulusRemotePropertyReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Property<>).Assembly.Location);
         //private static readonly MetadataReference RegulusRemoteNotifierReference = MetadataReference.CreateFromFile(typeof(Regulus.Remote.Notifier<>).Assembly.Location);
@@ -158,17 +159,25 @@ namespace TestHelper
             var solution = new AdhocWorkspace()
                 .CurrentSolution
                 .AddProject(projectId, TestProjectName, TestProjectName, language)
-                .AddMetadataReference(projectId, CorlibReference)
+                /*.AddMetadataReference(projectId, CorlibReference)
                 .AddMetadataReference(projectId, SystemCoreReference)
                 .AddMetadataReference(projectId, CSharpSymbolsReference)
-                .AddMetadataReference(projectId, CodeAnalysisReference)
-                //.AddMetadataReference(projectId, RegulusRemoteValueReference)
-                //.AddMetadataReference(projectId, RegulusRemotePropertyReference)
-                //.AddMetadataReference(projectId, RegulusRemoteNotifierReference)
-                .AddMetadataReference(projectId, RegulusUtilityReference)
+                .AddMetadataReference(projectId, CodeAnalysisReference)                */
+                /*.AddMetadataReference(projectId, RegulusUtilityReference)
                 .AddMetadataReference(projectId, RegulusNetworkReference)
-                .AddMetadataReference(projectId, RegulusRemoteSyntaxInterfaceAttributeReference)
+                .AddMetadataReference(projectId, RegulusRemoteSyntaxInterfaceAttributeReference)*/
                 ;
+            var asms = new[] { 
+                CorlibReference , 
+                SystemCoreReference, 
+                CSharpSymbolsReference, 
+                CodeAnalysisReference ,
+                MetadataReference.CreateFromFile(typeof(System.Attribute).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(System.Runtime.Serialization.DataContractAttribute).Assembly.Location),
+                
+            };
+            //var asms = new MetadataReference[0];
+            solution = solution.AddMetadataReferences(projectId, asms.Union(_GetAsms(typeof(Regulus.Remote.Syntax.CheckInterfaceAttribute).Assembly)));
 
             int count = 0;
             foreach (var source in sources)
@@ -180,6 +189,20 @@ namespace TestHelper
             }
             return solution.GetProject(projectId);
         }
+
+        private static IEnumerable<MetadataReference> _GetAsms(Assembly assembly)
+        {
+            foreach (var asmName in assembly.GetReferencedAssemblies())
+            {
+                var location = Assembly.Load(asmName).Location;
+                yield return MetadataReference.CreateFromFile(location);
+            }
+            yield return MetadataReference.CreateFromFile(assembly.Location);
+        }
+
+
+
+
         #endregion
     }
 }

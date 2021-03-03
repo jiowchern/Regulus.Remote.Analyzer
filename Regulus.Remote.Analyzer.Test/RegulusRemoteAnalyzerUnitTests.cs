@@ -1,12 +1,15 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CodeFixes;
+﻿using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestHelper;
 
+namespace Analyzers
+{
+}
+
 namespace Regulus.Remote.Analyzer.Test
 {
-    
+
     [TestClass]
     public class UnitTest : CodeFixVerifier
     {
@@ -14,17 +17,14 @@ namespace Regulus.Remote.Analyzer.Test
 using System;
 namespace MakeConstTest
 {
-    [Regulus.Remote.Syntax.Interface]
-    [System.Serializable()]
+    [Regulus.Remote.Syntax.CheckInterfaceAttribute]    
+    [System.Serializable]
     public interface ITest
     {
         Regulus.Remote.Value<bool> Get();
     }
 
-    [Regulus.Remote.Syntax.Interface]
-    public class Test
-    {
-    }
+
 }";
         // </SnippetVarDeclarations>
 
@@ -35,6 +35,12 @@ namespace MakeConstTest
         public void WhenTestCodeIsValidNoDiagnosticIsTriggered(string testCode)
         {
             VerifyCSharpDiagnostic(testCode);
+        }
+        [DataTestMethod]
+        public async void Test1()
+        {
+            var project =  Analyzers.can_compile_and_analyze.MakeProjectWith(ITestCode);
+            var dils = await Analyzers.can_compile_and_analyze.CompileAndAnalyze(project, new RegulusRemoteAnalyzerAnalyzer());            
         }
 
         
