@@ -129,4 +129,20 @@
     <value>Type name contains lowercase letters</value>
     <comment>The title of the diagnostic.</comment>
   </data>
+  <data name="CategoryReturnRule" xml:space="preserve">
+    <value>Return rule</value>
+    <comment>Return rule</comment>
+  </data>
+  <data name="DescriptionReturnRule" xml:space="preserve">
+    <value>The return must be an implementation of regulus.remote.value or regulus.remote.notifier.</value>
+    <comment>Return rule</comment>
+  </data>
+  <data name="MessageReturnRule" xml:space="preserve">
+    <value>Does not support type name {'0}'.</value>
+    <comment>Return rule</comment>
+  </data>
+  <data name="TitleReturnRule" xml:space="preserve">
+    <value>Error return.</value>
+    <comment>Return rule</comment>
+  </data>
 </root>

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Regulus.Remote.Analyzer</PackageId>
+    <PackageId>Regulus.Remote.CodeAnalysis</PackageId>
     <PackageVersion>1.0.0.0</PackageVersion>
     <Authors>User</Authors>
     <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
@@ -16,18 +16,18 @@
     <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
     <RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Description>Regulus.Remote.Analyzer</Description>
+    <Description>Regulus.Remote.CodeAnalysis</Description>
     <PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>
     <Copyright>Copyright</Copyright>
-    <PackageTags>Regulus.Remote.Analyzer, analyzers</PackageTags>
+    <PackageTags>Regulus.Remote.CodeAnalysis, analyzers</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
 
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Regulus.Remote.Analyzer.CodeFixes\Regulus.Remote.Analyzer.CodeFixes.csproj" />
-    <ProjectReference Include="..\Regulus.Remote.Analyzer\Regulus.Remote.Analyzer.csproj" />
+    <ProjectReference Include="..\Regulus.Remote.CodeAnalysis.CodeFixes\Regulus.Remote.CodeAnalysis.CodeFixes.csproj" />
+    <ProjectReference Include="..\Regulus.Remote.CodeAnalysis\Regulus.Remote.CodeAnalysis.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,8 +36,8 @@
 
   <Target Name="_AddAnalyzersToOutput">
     <ItemGroup>
-      <TfmSpecificPackageFile Include="$(OutputPath)\Regulus.Remote.Analyzer.dll" PackagePath="analyzers/dotnet/cs" />
-      <TfmSpecificPackageFile Include="$(OutputPath)\Regulus.Remote.Analyzer.CodeFixes.dll" PackagePath="analyzers/dotnet/cs" />
+      <TfmSpecificPackageFile Include="$(OutputPath)\Regulus.Remote.CodeAnalysis.dll" PackagePath="analyzers/dotnet/cs" />
+      <TfmSpecificPackageFile Include="$(OutputPath)\Regulus.Remote.CodeAnalysis.CodeFixes.dll" PackagePath="analyzers/dotnet/cs" />
     </ItemGroup>
   </Target>
 

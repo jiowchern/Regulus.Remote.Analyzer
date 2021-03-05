@@ -13,14 +13,14 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Regulus.Remote.Analyzer
+namespace Regulus.Remote.CodeAnalysis
 {
-    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(RegulusRemoteAnalyzerCodeFixProvider)), Shared]
-    public class RegulusRemoteAnalyzerCodeFixProvider : CodeFixProvider
+    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(RegulusRemoteCodeAnalysisCodeFixProvider)), Shared]
+    public class RegulusRemoteCodeAnalysisCodeFixProvider : CodeFixProvider
     {
         public sealed override ImmutableArray<string> FixableDiagnosticIds
         {
-            get { return ImmutableArray.Create(RegulusRemoteAnalyzerAnalyzer.DiagnosticId); }
+            get { return ImmutableArray.Create(RegulusRemoteCodeAnalysisAnalyzer.DiagnosticId); }
         }
 
         public sealed override FixAllProvider GetFixAllProvider()

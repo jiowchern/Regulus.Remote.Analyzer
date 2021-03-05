@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Regulus.Remote.Analyzer.ea689421-afa9-4345-ab1e-219dcae9bcb2" Version="1.0" Language="en-US" Publisher="User"/>
-    <DisplayName>Regulus.Remote.Analyzer</DisplayName>
+    <Identity Id="Regulus.Remote.CodeAnalysis.ec613002-b917-41df-99d5-8775aeb2a4b6" Version="1.0" Language="en-US" Publisher="User"/>
+    <DisplayName>Regulus.Remote.CodeAnalysis</DisplayName>
     <Description xml:space="preserve">This is a sample diagnostic extension for the .NET Compiler Platform ("Roslyn").</Description>
   </Metadata>
   <Installation>
@@ -12,10 +12,10 @@
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
   </Dependencies>
   <Assets>
-    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="Regulus.Remote.Analyzer" Path="|Regulus.Remote.Analyzer|"/>
-    <Asset Type="Microsoft.VisualStudio.Analyzer" d:Source="Project" d:ProjectName="Regulus.Remote.Analyzer" Path="|Regulus.Remote.Analyzer|"/>
-    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="Regulus.Remote.Analyzer.CodeFixes" Path="|Regulus.Remote.Analyzer.CodeFixes|"/>
-    <Asset Type="Microsoft.VisualStudio.Analyzer" d:Source="Project" d:ProjectName="Regulus.Remote.Analyzer.CodeFixes" Path="|Regulus.Remote.Analyzer.CodeFixes|"/>
+    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="Regulus.Remote.CodeAnalysis" Path="|Regulus.Remote.CodeAnalysis|"/>
+    <Asset Type="Microsoft.VisualStudio.Analyzer" d:Source="Project" d:ProjectName="Regulus.Remote.CodeAnalysis" Path="|Regulus.Remote.CodeAnalysis|"/>
+    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="Regulus.Remote.CodeAnalysis.CodeFixes" Path="|Regulus.Remote.CodeAnalysis.CodeFixes|"/>
+    <Asset Type="Microsoft.VisualStudio.Analyzer" d:Source="Project" d:ProjectName="Regulus.Remote.CodeAnalysis.CodeFixes" Path="|Regulus.Remote.CodeAnalysis.CodeFixes|"/>
   </Assets>
   <Prerequisites>
     <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />

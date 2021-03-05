@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <RootNamespace>Regulus.Remote.Analyzer</RootNamespace>
+    <RootNamespace>Regulus.Remote.CodeAnalysis</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Regulus.Remote.Analyzer\Regulus.Remote.Analyzer.csproj" />
+    <ProjectReference Include="..\Regulus.Remote.CodeAnalysis\Regulus.Remote.CodeAnalysis.csproj" />
   </ItemGroup>
 
   <ItemGroup>
