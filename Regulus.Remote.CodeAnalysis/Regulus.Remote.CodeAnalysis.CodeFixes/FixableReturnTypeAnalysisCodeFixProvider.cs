@@ -2,7 +2,6 @@
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
 using System.Collections.Immutable;
 using System.Composition;
 using System.Linq;
@@ -28,22 +27,9 @@ namespace Regulus.Remote.CodeAnalysis
         {
             var root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
 
-            // TODO: Replace the following code with your own analysis, generating a CodeAction for each fix to suggest
+            
             var diagnostic = context.Diagnostics.First();
             var diagnosticSpan = diagnostic.Location.SourceSpan;
-
-            // Find the type declaration identified by the diagnostic.
-            /*
-            var methodNode = root.FindNode(diagnosticSpan);
-            var declaration = methodNode as Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;          
-        
-            context.RegisterCodeFix(
-                Microsoft.CodeAnalysis.CodeActions.CodeAction.Create(
-                    title: CodeFixResources.CodeFixTitle,
-                    createChangedSolution: c => _MakeRemoteValue(context.Document, declaration, c),
-                    equivalenceKey: nameof(CodeFixResources.CodeFixTitle)),
-                diagnostic);
-            */
 
             var node = root.FindNode(diagnosticSpan);
             

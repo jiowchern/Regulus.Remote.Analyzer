@@ -115,6 +115,15 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
+        ///   查詢類似 No support for generic type &apos;{0}&apos;. 的當地語系化字串。
+        /// </summary>
+        internal static string MessageReturnRuleNoFixed {
+            get {
+                return ResourceManager.GetString("MessageReturnRuleNoFixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Error return value. 的當地語系化字串。
         /// </summary>
         internal static string TitleReturnRule {

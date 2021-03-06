@@ -141,6 +141,10 @@
     <value>No support type '{0}'.</value>
     <comment>Return rule</comment>
   </data>
+  <data name="MessageReturnRuleNoFixed" xml:space="preserve">
+    <value>No support for generic type '{0}'.</value>
+    <comment>Return rule not fixed</comment>
+  </data>
   <data name="TitleReturnRule" xml:space="preserve">
     <value>Error return value.</value>
     <comment>Return rule</comment>
