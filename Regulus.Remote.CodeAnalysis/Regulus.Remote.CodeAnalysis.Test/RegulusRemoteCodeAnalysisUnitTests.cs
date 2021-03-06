@@ -10,30 +10,6 @@ namespace Regulus.Remote.CodeAnalysis.Test
     [TestClass]
     public class RegulusRemoteCodeAnalysisUnitTest
     {
-        //No diagnostics expected to show up
-        [TestMethod]
-        public async Task TestMethod1()
-        {
-            var test = @"";
-
-            await VerifyCS.VerifyAnalyzerAsync(test);
-        }
-
-        //No diagnostics expected to show up
-        [TestMethod]
-        public async Task TestAttributeCheck()
-        {
-            var test = @"
-namespace ConsoleApplication1
-{
-    [Regulus.Remote.Attributes.SyntaxCheck()]
-    public interface IFoo
-    {       
-    }
-}
-";            
-            await VerifyCS.VerifyAnalyzerAsync(test);
-        }
 
         [TestMethod]
         public async Task TestDirectReturn()
@@ -50,11 +26,56 @@ namespace ConsoleApplication1
 }
 ";
             var expected = VerifyCS.Diagnostic("RegulusRemoteCodeAnalysisReturnRule").WithSpan(7, 13, 7, 20).WithArguments("Method1");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);            
+            await VerifyCS.VerifyAnalyzerAsync(test, expected);
         }
 
-        //Diagnostic and CodeFix both triggered and checked for
         [TestMethod]
+        public async Task TestVoidReturn()
+        {
+            var test = @"
+namespace ConsoleApplication1
+{
+    [Regulus.Remote.Attributes.SyntaxCheck()]
+    public interface IFoo
+    {       
+        void Method1();
+        //Regulus.Remote.Value<int> Method2();
+    }
+}
+";
+            //var expected = VerifyCS.Diagnostic("RegulusRemoteCodeAnalysisReturnRule").WithSpan(7, 13, 7, 20).WithArguments("Method1");
+            await VerifyCS.VerifyAnalyzerAsync(test);
+        }
+
+        //No diagnostics expected to show up
+        //[TestMethod]
+        public async Task TestMethod1()
+        {
+            var test = @"";
+
+            await VerifyCS.VerifyAnalyzerAsync(test);
+        }
+
+        //No diagnostics expected to show up
+        //[TestMethod]
+        public async Task TestAttributeCheck()
+        {
+            var test = @"
+namespace ConsoleApplication1
+{
+    [Regulus.Remote.Attributes.SyntaxCheck()]
+    public interface IFoo
+    {       
+    }
+}
+";            
+            await VerifyCS.VerifyAnalyzerAsync(test);
+        }
+
+        
+
+        //Diagnostic and CodeFix both triggered and checked for
+        //[TestMethod]
         public async Task TestMethod2()
         {
             var test = @"

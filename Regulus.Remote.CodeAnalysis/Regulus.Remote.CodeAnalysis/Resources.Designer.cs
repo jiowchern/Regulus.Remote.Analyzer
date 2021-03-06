@@ -97,7 +97,7 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
-        ///   查詢類似 The return must be an implementation of regulus.remote.value or regulus.remote.notifier. 的當地語系化字串。
+        ///   查詢類似 The return must be an implementation of regulus.remote.value or System.Void. 的當地語系化字串。
         /// </summary>
         internal static string DescriptionReturnRule {
             get {

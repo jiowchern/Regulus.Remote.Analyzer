@@ -39,7 +39,7 @@ namespace Regulus.Remote.CodeAnalysis
             // TODO: Consider registering other actions that act on syntax instead of or in addition to symbols
             // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/Analyzer%20Actions%20Semantics.md for more information
             //context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.NamedType);
-            context.RegisterSymbolAction(_NamedTypeCheck, SymbolKind.NamedType);
+            //context.RegisterSymbolAction(_NamedTypeCheck, SymbolKind.NamedType);
             context.RegisterSymbolAction(_MethodTypeCheck, SymbolKind.Method);
         }
 
@@ -50,17 +50,21 @@ namespace Regulus.Remote.CodeAnalysis
             var checkerType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Attributes.SyntaxCheck");
             if (!attrs.ContainsAttributeType(checkerType))
                 return;
-
-            var returnType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
-
-
             var retType = symbol.ReturnType;
-            
-            if (!SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, returnType))
+            var returnType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
+            if (SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, returnType))
             {
-                var diagnostic = Diagnostic.Create(ReturnRule, symbol.Locations[0], symbol.Name);
-                context.ReportDiagnostic(diagnostic);
+                return;                
             }
+
+            var voidType = context.Compilation.GetTypeByMetadataName("System.Void");
+            if (SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, voidType))
+            {
+                return;
+            }
+
+            var diagnostic = Diagnostic.Create(ReturnRule, symbol.Locations[0], symbol.Name);
+            context.ReportDiagnostic(diagnostic);
         }
 
         private void _NamedTypeCheck(SymbolAnalysisContext context)

@@ -134,7 +134,7 @@
     <comment>Return rule</comment>
   </data>
   <data name="DescriptionReturnRule" xml:space="preserve">
-    <value>The return must be an implementation of regulus.remote.value or regulus.remote.notifier.</value>
+    <value>The return must be an implementation of regulus.remote.value or System.Void.</value>
     <comment>Return rule</comment>
   </data>
   <data name="MessageReturnRule" xml:space="preserve">
