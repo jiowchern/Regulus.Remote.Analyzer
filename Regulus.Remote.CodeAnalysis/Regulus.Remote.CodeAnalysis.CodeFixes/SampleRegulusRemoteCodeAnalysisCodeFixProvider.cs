@@ -42,7 +42,7 @@ namespace Regulus.Remote.CodeAnalysis
             var diagnosticSpan = diagnostic.Location.SourceSpan;
 
             // Find the type declaration identified by the diagnostic.
-            var declaration = root.FindToken(diagnosticSpan.Start).Parent.AncestorsAndSelf().OfType<TypeDeclarationSyntax>().First();
+            var declaration = root.FindToken(diagnosticSpan.Start).Parent.AncestorsAndSelf().OfType<TypeDeclarationSyntax>().First();            
 
             // Register a code action that will invoke the fix.
             context.RegisterCodeFix(
@@ -67,7 +67,7 @@ namespace Regulus.Remote.CodeAnalysis
             var originalSolution = document.Project.Solution;
             var optionSet = originalSolution.Workspace.Options;
             var newSolution = await Renamer.RenameSymbolAsync(document.Project.Solution, typeSymbol, newName, optionSet, cancellationToken).ConfigureAwait(false);
-
+            
             // Return the new solution with the now-uppercase type name.
             return newSolution;
         }

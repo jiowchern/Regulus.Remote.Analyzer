@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using VerifyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
     Regulus.Remote.CodeAnalysis.RegulusRemoteCodeAnalysisAnalyzer,
@@ -38,6 +39,7 @@ namespace ConsoleApplication1
 }
 ";
             var expected = VerifyCS.Diagnostic("RegulusRemoteCodeAnalysisReturnRule").WithSpan(7, 13, 7, 20).WithArguments("Method1");
+            
             await VerifyCS.VerifyAnalyzerAsync(test, expected);
         }
 
@@ -50,12 +52,40 @@ namespace ConsoleApplication1
     [Regulus.Remote.Attributes.SyntaxCheck()]
     public interface IFoo
     {       
-        void Method1();
-        //Regulus.Remote.Value<int> Method2();
+        void Method1();        
     }
 }
 ";            
             await VerifyCS.VerifyAnalyzerAsync(test);
+        }
+
+        [TestMethod]
+        public async Task TestDirectReturnFix()
+        {
+            var test = @"
+namespace ConsoleApplication1
+{
+    [Regulus.Remote.Attributes.SyntaxCheck()]
+    public interface IFoo
+    {       
+        int Method1();        
+        Regulus.Remote.Value<int> Method2();
+    }
+}
+";
+            var fixTest = @"
+namespace ConsoleApplication1
+{
+    [Regulus.Remote.Attributes.SyntaxCheck()]
+    public interface IFoo
+    {       
+Regulus.Remote.Value<int>Method1();        
+        Regulus.Remote.Value<int> Method2();
+    }
+}
+";
+            var expected = VerifyCS.Diagnostic("RegulusRemoteCodeAnalysisReturnRule").WithSpan(7, 13, 7, 20).WithArguments("Method1");
+            await VerifyCS.VerifyCodeFixAsync(test, expected, fixTest);
         }
     }
 }

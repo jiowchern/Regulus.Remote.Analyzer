@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
+using System;
 using System.Collections.Immutable;
 
 namespace Regulus.Remote.CodeAnalysis
@@ -24,7 +25,10 @@ namespace Regulus.Remote.CodeAnalysis
             context.EnableConcurrentExecution();
             
             context.RegisterSymbolAction(_MethodTypeCheck, SymbolKind.Method);
+
         }
+
+
         private void _MethodTypeCheck(SymbolAnalysisContext context)
         {
             var symbol = (IMethodSymbol)context.Symbol;
@@ -33,8 +37,8 @@ namespace Regulus.Remote.CodeAnalysis
             if (!attrs.ContainsAttributeType(checkerType))
                 return;
             var retType = symbol.ReturnType;
-            var returnType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
-            if (SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, returnType))
+            var valueType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
+            if (SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, valueType))
             {
                 return;
             }
@@ -45,7 +49,7 @@ namespace Regulus.Remote.CodeAnalysis
                 return;
             }
 
-            var diagnostic = Diagnostic.Create(ReturnRule, symbol.Locations[0], symbol.Name);
+            var diagnostic = Diagnostic.Create(ReturnRule, symbol.Locations[0], symbol.Name) ;
             context.ReportDiagnostic(diagnostic);
         }
     }
