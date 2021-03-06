@@ -129,13 +129,27 @@
     <value>Type name contains lowercase letters</value>
     <comment>The title of the diagnostic.</comment>
   </data>
-  <data name="CategoryReturnRule" xml:space="preserve">
-    <value>Return rule</value>
+  <data name="Category" xml:space="preserve">
+    <value>Nameing</value>
     <comment>Return rule</comment>
+  </data>
+  <data name="DescriptionParamNotGeneric" xml:space="preserve">
+    <value>The parameter must not be an generic type.</value>
+  </data>
+  <data name="DescriptionParamNotInterface" xml:space="preserve">
+    <value>The parameter must not be an interface type.</value>
+    <comment>ParamNotInterface</comment>
   </data>
   <data name="DescriptionReturnRule" xml:space="preserve">
     <value>The return value does not support types other than Regulus.Remote.Value or System.Void.</value>
     <comment>Return rule</comment>
+  </data>
+  <data name="MessageParamNotGeneric" xml:space="preserve">
+    <value>Parameter '{0}' must not be an generic type.</value>
+  </data>
+  <data name="MessageParamNotInterface" xml:space="preserve">
+    <value>Parameter '{0}' must not be an interface type.</value>
+    <comment>ParamNotInterface</comment>
   </data>
   <data name="MessageReturnRule" xml:space="preserve">
     <value>No support type '{0}'.</value>
@@ -144,6 +158,13 @@
   <data name="MessageReturnRuleNoFixed" xml:space="preserve">
     <value>No support for generic type '{0}'.</value>
     <comment>Return rule not fixed</comment>
+  </data>
+  <data name="TitleParamNotGeneric" xml:space="preserve">
+    <value>Error params.</value>
+  </data>
+  <data name="TitleParamNotInterface" xml:space="preserve">
+    <value>Error params.</value>
+    <comment>ParamNotInterface</comment>
   </data>
   <data name="TitleReturnRule" xml:space="preserve">
     <value>Error return value.</value>

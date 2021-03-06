@@ -88,11 +88,29 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
-        ///   查詢類似 Return rule 的當地語系化字串。
+        ///   查詢類似 Nameing 的當地語系化字串。
         /// </summary>
-        internal static string CategoryReturnRule {
+        internal static string Category {
             get {
-                return ResourceManager.GetString("CategoryReturnRule", resourceCulture);
+                return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 The parameter must not be an generic type. 的當地語系化字串。
+        /// </summary>
+        internal static string DescriptionParamNotGeneric {
+            get {
+                return ResourceManager.GetString("DescriptionParamNotGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 The parameter must not be an interface type. 的當地語系化字串。
+        /// </summary>
+        internal static string DescriptionParamNotInterface {
+            get {
+                return ResourceManager.GetString("DescriptionParamNotInterface", resourceCulture);
             }
         }
         
@@ -102,6 +120,24 @@ namespace Regulus.Remote.CodeAnalysis {
         internal static string DescriptionReturnRule {
             get {
                 return ResourceManager.GetString("DescriptionReturnRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Parameter &apos;{0}&apos; must not be an generic type. 的當地語系化字串。
+        /// </summary>
+        internal static string MessageParamNotGeneric {
+            get {
+                return ResourceManager.GetString("MessageParamNotGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Parameter &apos;{0}&apos; must not be an interface type. 的當地語系化字串。
+        /// </summary>
+        internal static string MessageParamNotInterface {
+            get {
+                return ResourceManager.GetString("MessageParamNotInterface", resourceCulture);
             }
         }
         
@@ -120,6 +156,24 @@ namespace Regulus.Remote.CodeAnalysis {
         internal static string MessageReturnRuleNoFixed {
             get {
                 return ResourceManager.GetString("MessageReturnRuleNoFixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error params. 的當地語系化字串。
+        /// </summary>
+        internal static string TitleParamNotGeneric {
+            get {
+                return ResourceManager.GetString("TitleParamNotGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error params. 的當地語系化字串。
+        /// </summary>
+        internal static string TitleParamNotInterface {
+            get {
+                return ResourceManager.GetString("TitleParamNotInterface", resourceCulture);
             }
         }
         

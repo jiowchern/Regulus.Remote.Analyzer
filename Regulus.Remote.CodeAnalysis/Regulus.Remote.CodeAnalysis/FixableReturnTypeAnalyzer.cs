@@ -9,11 +9,11 @@ namespace Regulus.Remote.CodeAnalysis
     public class FixableReturnTypeAnalyzer : DiagnosticAnalyzer
     {
         
-        public const string DiagnosticId = "regulsremote1";
+        public const string DiagnosticId = "rr0001";
         private static readonly LocalizableString TitleReturnRule = new LocalizableResourceString(nameof(Resources.TitleReturnRule), Resources.ResourceManager, typeof(Resources));
         private static readonly LocalizableString MessageReturnRule = new LocalizableResourceString(nameof(Resources.MessageReturnRule), Resources.ResourceManager, typeof(Resources));
         private static readonly LocalizableString DescriptionReturnRule = new LocalizableResourceString(nameof(Resources.DescriptionReturnRule), Resources.ResourceManager, typeof(Resources));
-        private static readonly DiagnosticDescriptor ReturnRule = new DiagnosticDescriptor(DiagnosticId, TitleReturnRule, MessageReturnRule, Resources.CategoryReturnRule, DiagnosticSeverity.Error, isEnabledByDefault: true, description: DescriptionReturnRule);
+        private static readonly DiagnosticDescriptor ReturnRule = new DiagnosticDescriptor(DiagnosticId, TitleReturnRule, MessageReturnRule, Resources.Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: DescriptionReturnRule);
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(ReturnRule); } }
         public FixableReturnTypeAnalyzer()
         {
@@ -54,8 +54,7 @@ namespace Regulus.Remote.CodeAnalysis
                 return;
             }
 
-            var methodNode = context.Node as Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;
-            
+            var methodNode = context.Node as Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;            
             var diagnostic = Diagnostic.Create(ReturnRule, methodNode.ReturnType.GetLocation(), retType.Name);
             context.ReportDiagnostic(diagnostic);
         }

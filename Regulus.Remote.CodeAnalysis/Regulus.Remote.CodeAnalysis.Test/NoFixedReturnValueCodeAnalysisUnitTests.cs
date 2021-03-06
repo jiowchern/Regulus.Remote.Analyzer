@@ -6,6 +6,7 @@ using VerifyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
 
 namespace Regulus.Remote.CodeAnalysis.Test
 {
+
     [TestClass]
     public class NoFixedReturnValueCodeAnalysisUnitTests
     {
