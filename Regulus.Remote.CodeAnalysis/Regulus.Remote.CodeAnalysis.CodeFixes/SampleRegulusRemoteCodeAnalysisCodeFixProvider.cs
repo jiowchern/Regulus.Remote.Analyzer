@@ -47,9 +47,9 @@ namespace Regulus.Remote.CodeAnalysis
             // Register a code action that will invoke the fix.
             context.RegisterCodeFix(
                 CodeAction.Create(
-                    title: CodeFixResources.CodeFixTitle,
+                    title: CodeFixResources.ReturnValueCodeFixTitle,
                     createChangedSolution: c => MakeUppercaseAsync(context.Document, declaration, c),
-                    equivalenceKey: nameof(CodeFixResources.CodeFixTitle)),
+                    equivalenceKey: nameof(CodeFixResources.ReturnValueCodeFixTitle)),
                 diagnostic);
         }
 

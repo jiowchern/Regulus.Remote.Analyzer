@@ -97,7 +97,7 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
-        ///   查詢類似 The return must be an implementation of Regulus.Remote.Value or System.Void. 的當地語系化字串。
+        ///   查詢類似 The return value does not support types other than Regulus.Remote.Value or System.Void. 的當地語系化字串。
         /// </summary>
         internal static string DescriptionReturnRule {
             get {
@@ -106,7 +106,7 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
-        ///   查詢類似 Does not support type name &apos;{0}&apos;. 的當地語系化字串。
+        ///   查詢類似 No support type &apos;{0}&apos;. 的當地語系化字串。
         /// </summary>
         internal static string MessageReturnRule {
             get {

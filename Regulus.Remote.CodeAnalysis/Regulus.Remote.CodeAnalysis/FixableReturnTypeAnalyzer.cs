@@ -24,18 +24,21 @@ namespace Regulus.Remote.CodeAnalysis
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
             
-            context.RegisterSymbolAction(_MethodTypeCheck, SymbolKind.Method);
-
+           
+            context.RegisterSyntaxNodeAction(_MethodTypeCheck , Microsoft.CodeAnalysis.CSharp.SyntaxKind.MethodDeclaration);
         }
 
-
-        private void _MethodTypeCheck(SymbolAnalysisContext context)
+        private void _MethodTypeCheck(SyntaxNodeAnalysisContext context)
         {
-            var symbol = (IMethodSymbol)context.Symbol;
+            var symbol = (IMethodSymbol)context.ContainingSymbol;
             var attrs = symbol.ReceiverType.GetAttributes();
             var checkerType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Attributes.SyntaxCheck");
             if (!attrs.ContainsAttributeType(checkerType))
                 return;
+
+            if (symbol.ReceiverType.TypeKind != TypeKind.Interface)
+                return;
+
             var retType = symbol.ReturnType;
             var valueType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
             if (SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, valueType))
@@ -49,8 +52,12 @@ namespace Regulus.Remote.CodeAnalysis
                 return;
             }
 
-            var diagnostic = Diagnostic.Create(ReturnRule, symbol.Locations[0], retType.Name) ;
+            var methodNode = context.Node as Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;
+            
+            var diagnostic = Diagnostic.Create(ReturnRule, methodNode.ReturnType.GetLocation(), retType.Name);
             context.ReportDiagnostic(diagnostic);
         }
+
+      
     }
 }

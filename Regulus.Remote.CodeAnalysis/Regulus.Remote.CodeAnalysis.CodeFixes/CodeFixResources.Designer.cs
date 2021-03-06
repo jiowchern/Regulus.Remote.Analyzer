@@ -61,11 +61,11 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
-        ///   查詢類似 Make remote value 的當地語系化字串。
+        ///   查詢類似 Convert to Regulus.Remote.Value 的當地語系化字串。
         /// </summary>
-        internal static string CodeFixTitle {
+        internal static string ReturnValueCodeFixTitle {
             get {
-                return ResourceManager.GetString("CodeFixTitle", resourceCulture);
+                return ResourceManager.GetString("ReturnValueCodeFixTitle", resourceCulture);
             }
         }
     }
