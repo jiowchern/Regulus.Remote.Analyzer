@@ -10,12 +10,17 @@ using System.Threading.Tasks;
 
 namespace Regulus.Remote.CodeAnalysis
 {
-    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(RegulusRemoteCodeAnalysisCodeFixProvider)), Shared]
-    public class RegulusRemoteCodeAnalysisCodeFixProvider : CodeFixProvider
+    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(FixableReturnTypeAnalysisCodeFixProvider)), Shared]
+    public class FixableReturnTypeAnalysisCodeFixProvider : CodeFixProvider
     {
         public sealed override ImmutableArray<string> FixableDiagnosticIds
         {
-            get { return ImmutableArray.Create(RegulusRemoteCodeAnalysisAnalyzer.DiagnosticId); }
+            get { return ImmutableArray.Create(FixableReturnTypeAnalyzer.DiagnosticId); }
+        }
+        public sealed override FixAllProvider GetFixAllProvider()
+        {
+            // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/FixAllProvider.md for more information on Fix All Providers
+            return WellKnownFixAllProviders.BatchFixer;
         }
 
         public override async Task RegisterCodeFixesAsync(CodeFixContext context)
@@ -28,9 +33,7 @@ namespace Regulus.Remote.CodeAnalysis
 
             // Find the type declaration identified by the diagnostic.
 
-            var declaration = root.FindNode(diagnosticSpan) as Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;
-            
-
+            var declaration = root.FindNode(diagnosticSpan) as Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;          
         
             context.RegisterCodeFix(
                 Microsoft.CodeAnalysis.CodeActions.CodeAction.Create(
@@ -44,9 +47,8 @@ namespace Regulus.Remote.CodeAnalysis
         {
             var root = await document.GetSyntaxRootAsync(c).ConfigureAwait(false);
             var retType = declaration.ReturnType;
-            var retStr = retType.ToString();
-            //var remoteReturn = TypeSyntaxFactory.GetTypeSyntax("Regulus.Remote.Value", );
-            var remoteReturn = SyntaxFactory.ParseTypeName($"Regulus.Remote.Value<{retStr}>");
+            var retStr = retType.ToString();            
+            var remoteReturn = SyntaxFactory.ParseTypeName($"Regulus.Remote.Value<{retStr}> ");
             var newNode = declaration.WithReturnType(remoteReturn);
             
             var newRoot = root.ReplaceNode(declaration, new[] { newNode } );            

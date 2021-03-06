@@ -14,7 +14,7 @@ namespace Regulus.Remote.CodeAnalysis.Test
         
 
         //No diagnostics expected to show up
-        [TestMethod]
+        //[TestMethod]
         public async Task TestMethod1()
         {
             var test = @"";
@@ -28,7 +28,7 @@ namespace Regulus.Remote.CodeAnalysis.Test
         
 
         //Diagnostic and CodeFix both triggered and checked for
-        [TestMethod]
+        //[TestMethod]
         public async Task TestMethod2()
         {
             var test = @"

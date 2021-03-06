@@ -134,15 +134,15 @@
     <comment>Return rule</comment>
   </data>
   <data name="DescriptionReturnRule" xml:space="preserve">
-    <value>The return must be an implementation of regulus.remote.value or System.Void.</value>
+    <value>The return must be an implementation of Regulus.Remote.Value or System.Void.</value>
     <comment>Return rule</comment>
   </data>
   <data name="MessageReturnRule" xml:space="preserve">
-    <value>Does not support type name {'0}'.</value>
+    <value>Does not support type name '{0}'.</value>
     <comment>Return rule</comment>
   </data>
   <data name="TitleReturnRule" xml:space="preserve">
-    <value>Error return.</value>
+    <value>Error return value.</value>
     <comment>Return rule</comment>
   </data>
 </root>
