@@ -9,19 +9,19 @@ namespace Regulus.Remote.CodeAnalysis
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class MethodParamsTypeAnalyzer : DiagnosticAnalyzer
     {
-        public const string DiagnosticInterfaceId = "rr0003";
-        private static readonly LocalizableString Title0003 = new LocalizableResourceString(nameof(Resources.TitleParamNotInterface), Resources.ResourceManager, typeof(Resources));
-        private static readonly LocalizableString Message0003 = new LocalizableResourceString(nameof(Resources.MessageParamNotInterface), Resources.ResourceManager, typeof(Resources));
-        private static readonly LocalizableString Description0003= new LocalizableResourceString(nameof(Resources.DescriptionParamNotInterface), Resources.ResourceManager, typeof(Resources));
-        private static readonly DiagnosticDescriptor Rule0003 = new DiagnosticDescriptor(DiagnosticInterfaceId, Title0003, Message0003, Resources.Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description0003);
+        public const string DiagnosticInterfaceId = "rr0002";
+        private static readonly LocalizableString Title0002 = new LocalizableResourceString(nameof(Resources.TitleParamNotInterface), Resources.ResourceManager, typeof(Resources));
+        private static readonly LocalizableString Message0002 = new LocalizableResourceString(nameof(Resources.MessageParamNotInterface), Resources.ResourceManager, typeof(Resources));
+        private static readonly LocalizableString Description0002= new LocalizableResourceString(nameof(Resources.DescriptionParamNotInterface), Resources.ResourceManager, typeof(Resources));
+        private static readonly DiagnosticDescriptor Rule0002 = new DiagnosticDescriptor(DiagnosticInterfaceId, Title0002, Message0002, Resources.Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description0002);
 
-        public const string DiagnosticGenericId = "rr0004";
-        private static readonly LocalizableString Title0004 = new LocalizableResourceString(nameof(Resources.TitleParamNotGeneric), Resources.ResourceManager, typeof(Resources));
-        private static readonly LocalizableString Message0004 = new LocalizableResourceString(nameof(Resources.MessageParamNotGeneric), Resources.ResourceManager, typeof(Resources));
-        private static readonly LocalizableString Description0004 = new LocalizableResourceString(nameof(Resources.DescriptionParamNotGeneric), Resources.ResourceManager, typeof(Resources));
-        private static readonly DiagnosticDescriptor Rule0004 = new DiagnosticDescriptor(DiagnosticGenericId, Title0004, Message0004, Resources.Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description0004);
+        public const string DiagnosticGenericId = "rr0003";
+        private static readonly LocalizableString Title0003 = new LocalizableResourceString(nameof(Resources.TitleParamNotGeneric), Resources.ResourceManager, typeof(Resources));
+        private static readonly LocalizableString Message0003 = new LocalizableResourceString(nameof(Resources.MessageParamNotGeneric), Resources.ResourceManager, typeof(Resources));
+        private static readonly LocalizableString Description0003 = new LocalizableResourceString(nameof(Resources.DescriptionParamNotGeneric), Resources.ResourceManager, typeof(Resources));
+        private static readonly DiagnosticDescriptor Rule0003 = new DiagnosticDescriptor(DiagnosticGenericId, Title0003, Message0003, Resources.Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description0003);
 
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(Rule0003, Rule0004); } }
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(Rule0002, Rule0003); } }
 
         public override void Initialize(AnalysisContext context)
         {
@@ -51,7 +51,7 @@ namespace Regulus.Remote.CodeAnalysis
                     continue;
                 }
                 
-                var diagnostic = Diagnostic.Create(Rule0003, p.Syntax.GetLocation(), p.Symbol.Name);
+                var diagnostic = Diagnostic.Create(Rule0002, p.Syntax.GetLocation(), p.Symbol.Name);
                 context.ReportDiagnostic(diagnostic);
                 return;
             }
@@ -67,7 +67,7 @@ namespace Regulus.Remote.CodeAnalysis
                     continue;
                 }
 
-                var diagnostic = Diagnostic.Create(Rule0004, p.Syntax.GetLocation(), p.Symbol.Name);
+                var diagnostic = Diagnostic.Create(Rule0003, p.Syntax.GetLocation(), p.Symbol.Name);
                 context.ReportDiagnostic(diagnostic);
                 return;
             }

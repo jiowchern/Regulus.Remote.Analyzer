@@ -38,9 +38,7 @@ namespace Regulus.Remote.CodeAnalysis
                 return;
 
             var retType = symbol.ReturnType as INamedTypeSymbol;
-
-            if (retType.IsGenericType)
-                return;
+          
 
             var valueType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
             if (SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, valueType))
