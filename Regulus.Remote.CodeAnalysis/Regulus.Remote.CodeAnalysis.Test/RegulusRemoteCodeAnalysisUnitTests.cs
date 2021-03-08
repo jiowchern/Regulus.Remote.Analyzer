@@ -18,7 +18,7 @@ namespace Regulus.Remote.CodeAnalysis.Test
             var test = @"
 namespace ConsoleApplication1
 {
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public class IFoo
     {       
         int Method()
@@ -37,7 +37,7 @@ namespace ConsoleApplication1
             var test = @"
 namespace ConsoleApplication1
 {
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public static class Foo
     {       
         static int Method(this int val )
@@ -55,7 +55,7 @@ namespace ConsoleApplication1
             var test = @"
 namespace ConsoleApplication1
 {
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public interface IFoo
     {       
     }
@@ -69,7 +69,7 @@ namespace ConsoleApplication1
             var test = @"
 namespace ConsoleApplication1
 {
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public interface IFoo
     {       
         int Method1();
@@ -88,7 +88,7 @@ namespace ConsoleApplication1
             var test = @"
 namespace ConsoleApplication1
 {
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public interface IFoo
     {       
         void Method1();        
@@ -104,7 +104,7 @@ namespace ConsoleApplication1
             var test = @"
 namespace ConsoleApplication1
 {
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public interface IFoo
     {       
         int Method1();        
@@ -115,7 +115,7 @@ namespace ConsoleApplication1
             var fixTest = @"
 namespace ConsoleApplication1
 {
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public interface IFoo
     {       
 Regulus.Remote.Value<int> Method1();        

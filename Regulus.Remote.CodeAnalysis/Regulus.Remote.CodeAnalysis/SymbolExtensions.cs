@@ -6,6 +6,8 @@ namespace Regulus.Remote.CodeAnalysis
 {
     public static class SymbolExtensions
     {
+
+        
         internal static bool ContainsAttributeType(this ImmutableArray<AttributeData> attributes, INamedTypeSymbol attributeType, bool exactMatch = false)
             => attributes.Any(a => attributeType.IsAssignableFrom(a.AttributeClass, exactMatch));
 

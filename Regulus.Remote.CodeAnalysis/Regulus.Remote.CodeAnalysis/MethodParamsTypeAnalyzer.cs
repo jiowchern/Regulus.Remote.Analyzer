@@ -34,7 +34,8 @@ namespace Regulus.Remote.CodeAnalysis
         {
             var symbol = (IMethodSymbol)context.ContainingSymbol;
             var attrs = symbol.ReceiverType.GetAttributes();
-            var checkerType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Attributes.SyntaxCheck");
+                        
+            var checkerType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));
             if (!attrs.ContainsAttributeType(checkerType))
                 return;
 

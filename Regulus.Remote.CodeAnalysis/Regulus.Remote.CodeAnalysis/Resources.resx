@@ -159,6 +159,15 @@
     <value>No support for generic type '{0}'.</value>
     <comment>Return rule not fixed</comment>
   </data>
+  <data name="rr0004-description" xml:space="preserve">
+    <value>The number of parameters cannot exceed 5.</value>
+  </data>
+  <data name="rr0004-message" xml:space="preserve">
+    <value>'{0}' is too many parameters.</value>
+  </data>
+  <data name="rr0004-title" xml:space="preserve">
+    <value>Error params.</value>
+  </data>
   <data name="TitleParamNotGeneric" xml:space="preserve">
     <value>Error params.</value>
   </data>

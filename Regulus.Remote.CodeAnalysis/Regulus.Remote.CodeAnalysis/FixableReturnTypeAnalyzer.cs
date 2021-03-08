@@ -7,8 +7,7 @@ namespace Regulus.Remote.CodeAnalysis
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class FixableReturnTypeAnalyzer : DiagnosticAnalyzer
-    {
-        
+    {        
         public const string DiagnosticId = "rr0001";
         private static readonly LocalizableString TitleReturnRule = new LocalizableResourceString(nameof(Resources.TitleReturnRule), Resources.ResourceManager, typeof(Resources));
         private static readonly LocalizableString MessageReturnRule = new LocalizableResourceString(nameof(Resources.MessageReturnRule), Resources.ResourceManager, typeof(Resources));
@@ -23,14 +22,18 @@ namespace Regulus.Remote.CodeAnalysis
         {
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
-            context.RegisterSyntaxNodeAction(_MethodTypeCheck , Microsoft.CodeAnalysis.CSharp.SyntaxKind.MethodDeclaration);
+
+            context.RegisterSyntaxNodeAction(_MethodTypeCheck, Microsoft.CodeAnalysis.CSharp.SyntaxKind.MethodDeclaration);
+
         }
+
+        
 
         private void _MethodTypeCheck(SyntaxNodeAnalysisContext context)
         {
             var symbol = (IMethodSymbol)context.ContainingSymbol;
             var attrs = symbol.ReceiverType.GetAttributes();
-            var checkerType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Attributes.SyntaxCheck");
+            var checkerType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));
             if (!attrs.ContainsAttributeType(checkerType))
                 return;
 

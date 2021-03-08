@@ -160,6 +160,33 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
+        ///   查詢類似 The number of parameters cannot exceed 5. 的當地語系化字串。
+        /// </summary>
+        internal static string rr0004_description {
+            get {
+                return ResourceManager.GetString("rr0004-description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 &apos;{0}&apos; is too many parameters. 的當地語系化字串。
+        /// </summary>
+        internal static string rr0004_message {
+            get {
+                return ResourceManager.GetString("rr0004-message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error params. 的當地語系化字串。
+        /// </summary>
+        internal static string rr0004_title {
+            get {
+                return ResourceManager.GetString("rr0004-title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Error params. 的當地語系化字串。
         /// </summary>
         internal static string TitleParamNotGeneric {

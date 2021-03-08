@@ -6,7 +6,6 @@ using VerifyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
 
 namespace Regulus.Remote.CodeAnalysis.Test
 {
-    
     [TestClass]
     public class MethodParamsCodeAnalysisUnitTests
     {
@@ -19,7 +18,7 @@ namespace ConsoleApplication1
     public interface IParam
     {
     }
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public interface IFoo
     {       
         void Method(IParam p1);        
@@ -40,7 +39,7 @@ namespace ConsoleApplication1
     public class Param<T>
     {
     }
-    [Regulus.Remote.Attributes.SyntaxCheck()]
+    [Regulus.Remote.Attributes.SyntaxHelper()]
     public interface IFoo
     {       
         void Method(Param<int> p1);        

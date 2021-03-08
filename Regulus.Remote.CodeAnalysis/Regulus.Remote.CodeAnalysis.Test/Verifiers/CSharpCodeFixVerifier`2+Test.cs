@@ -19,7 +19,7 @@ namespace Regulus.Remote.CodeAnalysis.Test
             {                
                 SolutionTransforms.Add((solution, projectId) =>
                 {
-                    solution = solution.AddMetadataReference(projectId , MetadataReference.CreateFromFile(typeof(Regulus.Remote.Attributes.SyntaxCheck).Assembly.Location));
+                    solution = solution.AddMetadataReference(projectId , MetadataReference.CreateFromFile(typeof(Regulus.Remote.Attributes.SyntaxHelper).Assembly.Location));
                     solution = solution.AddMetadataReference(projectId, MetadataReference.CreateFromFile(typeof(Regulus.Remote.Value<>).Assembly.Location));                    
                     
                     var compilationOptions = solution.GetProject(projectId).CompilationOptions;
