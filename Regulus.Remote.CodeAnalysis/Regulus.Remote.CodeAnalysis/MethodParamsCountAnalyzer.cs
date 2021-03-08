@@ -12,12 +12,11 @@ namespace Regulus.Remote.CodeAnalysis
         public const string DiagnosticId = "rr0004";
         
         static readonly DiagnosticDescriptor _DiagnosticDescriptor= new DiagnosticDescriptorCreateor(DiagnosticId).DiagnosticDescriptor;
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(_DiagnosticDescriptor);
         public MethodParamsCountAnalyzer()
         {
         
         }
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(_DiagnosticDescriptor);
-
         public override void Initialize(AnalysisContext context)
         {
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
@@ -28,7 +27,7 @@ namespace Regulus.Remote.CodeAnalysis
         private void _MethodAnalysis(SyntaxNodeAnalysisContext context)
         {
             var symbol = (IMethodSymbol)context.ContainingSymbol;
-            var attrs = symbol.ReceiverType.GetAttributes();
+            var attrs = symbol.ContainingSymbol.GetAttributes();
             var checkerType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));
             if (!attrs.ContainsAttributeType(checkerType))
                 return;

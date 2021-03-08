@@ -33,7 +33,7 @@ namespace Regulus.Remote.CodeAnalysis
         private void _MethodTypeCheck(SyntaxNodeAnalysisContext context)
         {
             var symbol = (IMethodSymbol)context.ContainingSymbol;
-            var attrs = symbol.ReceiverType.GetAttributes();
+            var attrs = symbol.ContainingSymbol.GetAttributes();
                         
             var checkerType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));
             if (!attrs.ContainsAttributeType(checkerType))
