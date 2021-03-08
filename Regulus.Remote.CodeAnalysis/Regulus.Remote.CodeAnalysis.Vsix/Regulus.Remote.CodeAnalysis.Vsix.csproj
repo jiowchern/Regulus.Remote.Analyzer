@@ -6,6 +6,7 @@
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>Regulus.Remote.CodeAnalysis.Vsix</RootNamespace>
     <AssemblyName>Regulus.Remote.CodeAnalysis.Vsix</AssemblyName>
+    <Version>0.1.8.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -26,6 +27,11 @@
     <StartAction>Program</StartAction>
     <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
     <StartArguments>/rootsuffix $(VSSDKTargetPlatformRegRootSuffix)</StartArguments>
+    <RepositoryUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis</PackageProjectUrl>
+    <Authors>jc</Authors>
+    <Company />
+    <Product />
   </PropertyGroup>
 
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
