@@ -187,6 +187,33 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
+        ///   查詢類似 Setter is not supported. 的當地語系化字串。
+        /// </summary>
+        internal static string rr0006_description {
+            get {
+                return ResourceManager.GetString("rr0006-description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Setter is not supported. 的當地語系化字串。
+        /// </summary>
+        internal static string rr0006_message {
+            get {
+                return ResourceManager.GetString("rr0006-message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error property. 的當地語系化字串。
+        /// </summary>
+        internal static string rr0006_title {
+            get {
+                return ResourceManager.GetString("rr0006-title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Error params. 的當地語系化字串。
         /// </summary>
         internal static string TitleParamNotGeneric {

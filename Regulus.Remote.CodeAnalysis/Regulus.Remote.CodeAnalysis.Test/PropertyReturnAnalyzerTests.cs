@@ -5,16 +5,17 @@ using VerifyNoFixedCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
     Regulus.Remote.CodeAnalysis.PropertyReturnAnalyzer,
     Regulus.Remote.CodeAnalysis.NoFixedAnalysisCodeFixProvider>;
 
-using VerifyNoFixToPropertyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
+using VerifyFixToPropertyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
     Regulus.Remote.CodeAnalysis.PropertyReturnAnalyzer,
     Regulus.Remote.CodeAnalysis.PropertyReturnPropertyAnalyzerCodeFixProvider>;
 
-using VerifyNoFixToNotifierCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
+using VerifyFixToNotifierCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
     Regulus.Remote.CodeAnalysis.PropertyReturnAnalyzer,
     Regulus.Remote.CodeAnalysis.PropertyReturnNotifierAnalyzerCodeFixProvider>;
 
 namespace Regulus.Remote.CodeAnalysis.Test
 {
+
     [TestClass]
     public class PropertyReturnAnalyzerTests
     {
@@ -41,8 +42,8 @@ Regulus.Remote.Property<int> Property1 { get; }
     }
 }
 ";
-            var expected = VerifyNoFixToPropertyCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
-            await VerifyNoFixToPropertyCS.VerifyCodeFixAsync(test, expected, fixTest);
+            var expected = VerifyFixToPropertyCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
+            await VerifyFixToPropertyCS.VerifyCodeFixAsync(test, expected, fixTest);
         }
 
         [TestMethod]
@@ -68,8 +69,8 @@ Regulus.Remote.Notifier<int> Property1 { get; }
     }
 }
 ";
-            var expected = VerifyNoFixToNotifierCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
-            await VerifyNoFixToNotifierCS.VerifyCodeFixAsync(test, expected, fixTest);
+            var expected = VerifyFixToNotifierCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
+            await VerifyFixToNotifierCS.VerifyCodeFixAsync(test, expected, fixTest);
         }
 
 

@@ -168,6 +168,15 @@
   <data name="rr0004-title" xml:space="preserve">
     <value>Error params.</value>
   </data>
+  <data name="rr0006-description" xml:space="preserve">
+    <value>Setter is not supported.</value>
+  </data>
+  <data name="rr0006-message" xml:space="preserve">
+    <value>Setter is not supported.</value>
+  </data>
+  <data name="rr0006-title" xml:space="preserve">
+    <value>Error property.</value>
+  </data>
   <data name="TitleParamNotGeneric" xml:space="preserve">
     <value>Error params.</value>
   </data>
