@@ -10,7 +10,7 @@ namespace Regulus.Remote.CodeAnalysis
 
         public DiagnosticDescriptorCreateor(string diagnostic_id)
         {
-
+            
             var title = new LocalizableResourceString($"{diagnostic_id}-title", Resources.ResourceManager, typeof(Resources));
             var message = new LocalizableResourceString($"{diagnostic_id}-message", Resources.ResourceManager, typeof(Resources));
             var description = new LocalizableResourceString($"{diagnostic_id}-description", Resources.ResourceManager, typeof(Resources));

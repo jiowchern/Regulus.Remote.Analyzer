@@ -23,7 +23,8 @@ namespace Regulus.Remote.CodeAnalysis
 
         private void _Analysis(SyntaxNodeAnalysisContext context)
         {
-            var symbol = context.ContainingSymbol as IPropertySymbol;            
+            var symbol = context.ContainingSymbol as IPropertySymbol;
+            var syntax = context.Node as Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax;
 
             var attrs = symbol.ContainingSymbol.GetAttributes();
             var checkerType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));
@@ -34,7 +35,8 @@ namespace Regulus.Remote.CodeAnalysis
                 return;
 
             var retSymbol = symbol.Type as INamedTypeSymbol;
-            
+            var retSyntax = syntax.Type;
+
             var propertySymbol = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Property<>));
             if (SymbolEqualityComparer.Default.Equals(retSymbol.OriginalDefinition, propertySymbol))
             {
@@ -48,7 +50,7 @@ namespace Regulus.Remote.CodeAnalysis
             }
 
             
-            var diagnostic = Diagnostic.Create(_DiagnosticDescriptor, context.Node.GetLocation() , retSymbol.Name);
+            var diagnostic = Diagnostic.Create(_DiagnosticDescriptor, retSyntax.GetLocation() , retSymbol.Name);
             context.ReportDiagnostic(diagnostic);
 
         }

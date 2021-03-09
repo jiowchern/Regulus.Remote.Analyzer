@@ -121,4 +121,10 @@
     <value>Convert to Regulus.Remote.Value</value>
     <comment>The title of the code fix.</comment>
   </data>
+  <data name="rr0005TitleNotifier" xml:space="preserve">
+    <value>Convert to Regulus.Remote.Notifier</value>
+  </data>
+  <data name="rr0005TitleProperty" xml:space="preserve">
+    <value>Convert to Regulus.Remote.Property</value>
+  </data>
 </root>

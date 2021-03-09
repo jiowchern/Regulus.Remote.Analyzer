@@ -68,5 +68,23 @@ namespace Regulus.Remote.CodeAnalysis {
                 return ResourceManager.GetString("ReturnValueCodeFixTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查詢類似 Convert to Regulus.Remote.Notifier 的當地語系化字串。
+        /// </summary>
+        internal static string rr0005TitleNotifier {
+            get {
+                return ResourceManager.GetString("rr0005TitleNotifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Convert to Regulus.Remote.Property 的當地語系化字串。
+        /// </summary>
+        internal static string rr0005TitleProperty {
+            get {
+                return ResourceManager.GetString("rr0005TitleProperty", resourceCulture);
+            }
+        }
     }
 }

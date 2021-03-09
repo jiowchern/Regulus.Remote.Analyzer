@@ -1,9 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 
-using VerifyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
+using VerifyNoFixedCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
     Regulus.Remote.CodeAnalysis.PropertyReturnAnalyzer,
-    Regulus.Remote.CodeAnalysis.PropertyReturnAnalyzerCodeFixProvider>;
+    Regulus.Remote.CodeAnalysis.NoFixedAnalysisCodeFixProvider>;
+
+using VerifyNoFixToPropertyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
+    Regulus.Remote.CodeAnalysis.PropertyReturnAnalyzer,
+    Regulus.Remote.CodeAnalysis.PropertyReturnPropertyAnalyzerCodeFixProvider>;
+
+using VerifyNoFixToNotifierCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
+    Regulus.Remote.CodeAnalysis.PropertyReturnAnalyzer,
+    Regulus.Remote.CodeAnalysis.PropertyReturnNotifierAnalyzerCodeFixProvider>;
 
 namespace Regulus.Remote.CodeAnalysis.Test
 {
@@ -33,13 +41,40 @@ Regulus.Remote.Property<int> Property1 { get; }
     }
 }
 ";
-            var expected = VerifyCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
-            await VerifyCS.VerifyCodeFixAsync(test, expected, fixTest);
+            var expected = VerifyNoFixToPropertyCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
+            await VerifyNoFixToPropertyCS.VerifyCodeFixAsync(test, expected, fixTest);
+        }
+
+        [TestMethod]
+        public async Task FixedReturnToNotifierTest()
+        {
+            var test = @"
+namespace ConsoleApplication1
+{
+    [Regulus.Remote.Attributes.SyntaxHelper()]
+    public interface IFoo
+    {       
+        int Property1 { get; }
+    }
+}
+";
+            var fixTest = @"
+namespace ConsoleApplication1
+{
+    [Regulus.Remote.Attributes.SyntaxHelper()]
+    public interface IFoo
+    {       
+Regulus.Remote.Notifier<int> Property1 { get; }
+    }
+}
+";
+            var expected = VerifyNoFixToNotifierCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
+            await VerifyNoFixToNotifierCS.VerifyCodeFixAsync(test, expected, fixTest);
         }
 
 
         [TestMethod]
-        public async Task Test()
+        public async Task NoFixTest()
         {
             var test = @"
 namespace ConsoleApplication1
@@ -52,8 +87,8 @@ namespace ConsoleApplication1
 }
 ";
   
-            var expected = VerifyCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("int");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);            
+            var expected = VerifyNoFixedCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("int");
+            await VerifyNoFixedCS.VerifyAnalyzerAsync(test, expected);            
         }
 
     }

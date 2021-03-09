@@ -56,22 +56,7 @@ namespace Regulus.Remote.CodeAnalysis
             return document.Project.Solution.WithDocumentSyntaxRoot(document.Id, newRoot);
         }
 
-        private async Task<Solution> _MakeRemoteValue(Document document, Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax declaration, CancellationToken c)
-        {
-            
-            var root = await document.GetSyntaxRootAsync(c).ConfigureAwait(false);
-
-            
-            var retType = declaration.ReturnType;
-            var retStr = retType.ToString();            
-            var remoteReturn = SyntaxFactory.ParseTypeName($"Regulus.Remote.Value<{retStr}> ");
-            
-            var newNode = declaration.WithReturnType(remoteReturn);
-            
-            var newRoot = root.ReplaceNode(declaration, new[] { newNode } );            
-            return document.Project.Solution.WithDocumentSyntaxRoot(document.Id, newRoot);
-            
-        }
+     
 
 
     }
