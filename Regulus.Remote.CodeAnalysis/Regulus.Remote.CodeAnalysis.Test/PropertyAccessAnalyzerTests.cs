@@ -34,7 +34,7 @@ namespace ConsoleApplication1
 }
 ";
 
-            var expected = VerifyFixRemoveCS.Diagnostic(PropertyAccessAnalyzer.DiagnosticId).WithSpan(7, 55, 7, 59).WithArguments("set");
+            var expected = VerifyFixRemoveCS.Diagnostic(ERRORID.RRE6.GetDiagnosticId()).WithSpan(7, 55, 7, 59).WithArguments("set");
             //await VerifyFixRemoveCS.VerifyCodeFixAsync(test, expected, fixTest);
             await VerifyFixRemoveCS.VerifyAnalyzerAsync(test, expected);
         }

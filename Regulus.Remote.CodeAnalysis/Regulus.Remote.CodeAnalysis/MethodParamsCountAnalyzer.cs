@@ -24,13 +24,7 @@ namespace Regulus.Remote.CodeAnalysis
         {
             report = null;
             var symbol = (IMethodSymbol)context.ContainingSymbol;
-            var attrs = symbol.ContainingSymbol.GetAttributes();
-            var checkerType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));
-            if (!attrs.ContainsAttributeType(checkerType))
-                return false;
-
-            if (symbol.ReceiverType.TypeKind != TypeKind.Interface)
-                return false;
+            
 
             var methodNode = context.Node as Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;
             var lastParam = methodNode.ParameterList.Parameters.Zip(symbol.Parameters, (f, s) => new { Syntax = f, Symbol = s }).Skip(5).LastOrDefault();

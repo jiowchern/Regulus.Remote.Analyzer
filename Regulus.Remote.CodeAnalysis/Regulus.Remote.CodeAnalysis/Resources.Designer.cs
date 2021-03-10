@@ -106,33 +106,6 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
-        ///   查詢類似 Setter is not supported. 的當地語系化字串。
-        /// </summary>
-        internal static string rr0006_description {
-            get {
-                return ResourceManager.GetString("rr0006-description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 Setter is not supported. 的當地語系化字串。
-        /// </summary>
-        internal static string rr0006_message {
-            get {
-                return ResourceManager.GetString("rr0006-message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 Error property. 的當地語系化字串。
-        /// </summary>
-        internal static string rr0006_title {
-            get {
-                return ResourceManager.GetString("rr0006-title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查詢類似 The return value does not support types other than Regulus.Remote.Value or System.Void. 的當地語系化字串。
         /// </summary>
         internal static string RRE1Description {
@@ -264,6 +237,33 @@ namespace Regulus.Remote.CodeAnalysis {
         internal static string RRE5Title {
             get {
                 return ResourceManager.GetString("RRE5Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Setter is not supported. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE6Description {
+            get {
+                return ResourceManager.GetString("RRE6Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Setter is not supported. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE6Message {
+            get {
+                return ResourceManager.GetString("RRE6Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error property. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE6Title {
+            get {
+                return ResourceManager.GetString("RRE6Title", resourceCulture);
             }
         }
     }

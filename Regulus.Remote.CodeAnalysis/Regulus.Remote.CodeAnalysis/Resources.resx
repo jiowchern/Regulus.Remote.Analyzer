@@ -137,15 +137,6 @@
     <value>No support for generic type '{0}'.</value>
     <comment>Return rule not fixed</comment>
   </data>
-  <data name="rr0006-description" xml:space="preserve">
-    <value>Setter is not supported.</value>
-  </data>
-  <data name="rr0006-message" xml:space="preserve">
-    <value>Setter is not supported.</value>
-  </data>
-  <data name="rr0006-title" xml:space="preserve">
-    <value>Error property.</value>
-  </data>
   <data name="RRE1Description" xml:space="preserve">
     <value>The return value does not support types other than Regulus.Remote.Value or System.Void.</value>
     <comment>Return rule</comment>
@@ -196,5 +187,14 @@
   </data>
   <data name="RRE5Title" xml:space="preserve">
     <value>Error property type.</value>
+  </data>
+  <data name="RRE6Description" xml:space="preserve">
+    <value>Setter is not supported.</value>
+  </data>
+  <data name="RRE6Message" xml:space="preserve">
+    <value>Setter is not supported.</value>
+  </data>
+  <data name="RRE6Title" xml:space="preserve">
+    <value>Error property.</value>
   </data>
 </root>

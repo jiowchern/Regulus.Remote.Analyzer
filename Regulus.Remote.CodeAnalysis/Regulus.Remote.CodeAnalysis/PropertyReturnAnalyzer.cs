@@ -22,14 +22,6 @@ namespace Regulus.Remote.CodeAnalysis
             var symbol = context.ContainingSymbol as IPropertySymbol;
             var syntax = context.Node as Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax;
 
-            var attrs = symbol.ContainingSymbol.GetAttributes();
-            var checkerType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));
-            if (!attrs.ContainsAttributeType(checkerType))
-                return false;
-
-            if (symbol.ContainingType.TypeKind != TypeKind.Interface)
-                return false; 
-
             var retSymbol = symbol.Type as INamedTypeSymbol;
             var retSyntax = syntax.Type;
 
