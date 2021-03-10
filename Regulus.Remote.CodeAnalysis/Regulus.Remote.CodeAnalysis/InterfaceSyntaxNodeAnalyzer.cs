@@ -10,22 +10,36 @@ namespace Regulus.Remote.CodeAnalysis
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public abstract class InterfaceSyntaxNodeAnalyzer : DiagnosticAnalyzer
     {
-        public readonly DiagnosticDescriptor Descriptor;        
+
+        public class Report
+        {
+            public readonly object[] Args;
+            public readonly Location Location;            
+
+            public Report(Location location, params object[]  args)
+            {
+                Location = location;
+                Args = args;
+            }
+        }
+        public readonly DiagnosticDescriptor Descriptor;
+        private readonly SyntaxKind[] _Kinds;
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Descriptor);
 
-        public InterfaceSyntaxNodeAnalyzer(ERRORID id )
+        public InterfaceSyntaxNodeAnalyzer(ERRORID id , params SyntaxKind[] kinds)
         {
-            Descriptor = DiagnosticDescriptorProvider.Instance[id];            
+            Descriptor = id.GetDiagnostic();
+            this._Kinds = kinds;
         }
 
         public override void Initialize(AnalysisContext context)
         {
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
-            context.RegisterSyntaxNodeAction(_Analysis, SyntaxKind.MethodDeclaration , SyntaxKind.EventDeclaration , SyntaxKind.PropertyDeclaration );
+            context.RegisterSyntaxNodeAction(_Analysis, _Kinds);
         }
-        public abstract void Analysis(SyntaxNodeAnalysisContext context);
+        public abstract bool NeedReport(SyntaxNodeAnalysisContext context,out Report report);
         private void _Analysis(SyntaxNodeAnalysisContext context)
         {
             if(_NoHelp(context))            
@@ -34,7 +48,12 @@ namespace Regulus.Remote.CodeAnalysis
             if (_NoInterface(context))
                 return;
 
-            Analysis(context);
+            Report report;
+            if(NeedReport(context, out report))
+            {
+                var diagnostic = Diagnostic.Create(Descriptor, report.Location , report.Args);
+                context.ReportDiagnostic(diagnostic);
+            }
         }
 
         private bool _NoInterface(SyntaxNodeAnalysisContext context)

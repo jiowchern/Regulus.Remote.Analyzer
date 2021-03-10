@@ -10,12 +10,16 @@ namespace Regulus.Remote.CodeAnalysis
     public class MethodReturnAnalyzer : InterfaceSyntaxNodeAnalyzer
     {
         
-        public MethodReturnAnalyzer() : base(ERRORID.RRE1)
+        public MethodReturnAnalyzer() : base(ERRORID.RRE1 , Microsoft.CodeAnalysis.CSharp.SyntaxKind.MethodDeclaration)
         {
         }
 
-        public override void Analysis(SyntaxNodeAnalysisContext context)
+        public override bool NeedReport(SyntaxNodeAnalysisContext context , out InterfaceSyntaxNodeAnalyzer.Report report )
         {
+            report = null;
+            if (context.ContainingSymbol.Kind != SymbolKind.Method)
+                return false;
+
             var symbol = (IMethodSymbol)context.ContainingSymbol;            
 
             var retType = symbol.ReturnType as INamedTypeSymbol;
@@ -23,18 +27,17 @@ namespace Regulus.Remote.CodeAnalysis
             var valueType = context.Compilation.GetTypeByMetadataName("Regulus.Remote.Value`1");
             if (SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, valueType))
             {
-                return;
+                return false;
             }
 
             var voidType = context.Compilation.GetTypeByMetadataName("System.Void");
             if (SymbolEqualityComparer.Default.Equals(retType.OriginalDefinition, voidType))
             {
-                return;
+                return false;
             }
-
             var methodNode = context.Node as Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;
-            var diagnostic = Diagnostic.Create(ERRORID.RRE1.GetDiagnostic(), methodNode.ReturnType.GetLocation(), retType.Name);
-            context.ReportDiagnostic(diagnostic);
+            report = new Report(methodNode.ReturnType.GetLocation(), retType.Name);
+            return true;
         }
        
 

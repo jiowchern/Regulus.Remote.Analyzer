@@ -133,20 +133,6 @@
     <value>Nameing</value>
     <comment>Return rule</comment>
   </data>
-  <data name="DescriptionParamNotGeneric" xml:space="preserve">
-    <value>The parameter must not be an generic type.</value>
-  </data>
-  <data name="DescriptionParamNotInterface" xml:space="preserve">
-    <value>The parameter must not be an interface type.</value>
-    <comment>ParamNotInterface</comment>
-  </data>
-  <data name="MessageParamNotGeneric" xml:space="preserve">
-    <value>Parameter '{0}' must not be an generic type.</value>
-  </data>
-  <data name="MessageParamNotInterface" xml:space="preserve">
-    <value>Parameter '{0}' must not be an interface type.</value>
-    <comment>ParamNotInterface</comment>
-  </data>
   <data name="MessageReturnRuleNoFixed" xml:space="preserve">
     <value>No support for generic type '{0}'.</value>
     <comment>Return rule not fixed</comment>
@@ -169,23 +155,37 @@
   <data name="rr0006-title" xml:space="preserve">
     <value>Error property.</value>
   </data>
-  <data name="RR1Description" xml:space="preserve">
+  <data name="RRE1Description" xml:space="preserve">
     <value>The return value does not support types other than Regulus.Remote.Value or System.Void.</value>
     <comment>Return rule</comment>
   </data>
-  <data name="RR1Message" xml:space="preserve">
+  <data name="RRE1Message" xml:space="preserve">
     <value>No support type '{0}'.</value>
     <comment>Return rule</comment>
   </data>
-  <data name="RR1Title" xml:space="preserve">
+  <data name="RRE1Title" xml:space="preserve">
     <value>Error return value.</value>
     <comment>Return rule</comment>
   </data>
-  <data name="TitleParamNotGeneric" xml:space="preserve">
-    <value>Error params.</value>
+  <data name="RRE2Description" xml:space="preserve">
+    <value>The parameter must not be an interface type.</value>
+    <comment>ParamNotInterface</comment>
   </data>
-  <data name="TitleParamNotInterface" xml:space="preserve">
+  <data name="RRE2Message" xml:space="preserve">
+    <value>Parameter '{0}' must not be an interface type.</value>
+    <comment>ParamNotInterface</comment>
+  </data>
+  <data name="RRE2Title" xml:space="preserve">
     <value>Error params.</value>
     <comment>ParamNotInterface</comment>
+  </data>
+  <data name="RRE3Description" xml:space="preserve">
+    <value>The parameter must not be an generic type.</value>
+  </data>
+  <data name="RRE3Message" xml:space="preserve">
+    <value>Parameter '{0}' must not be an generic type.</value>
+  </data>
+  <data name="RRE3Title" xml:space="preserve">
+    <value>Error params.</value>
   </data>
 </root>

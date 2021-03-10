@@ -1,7 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
-using VerifyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
-    Regulus.Remote.CodeAnalysis.MethodParamsTypeAnalyzer,
+using VerifyNoGenericTypeCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
+    Regulus.Remote.CodeAnalysis.MethodParamsNoGenericTypeAnalyzer,
+    Regulus.Remote.CodeAnalysis.NoFixedAnalysisCodeFixProvider>;
+
+using VerifyNoInterfaceCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
+    Regulus.Remote.CodeAnalysis.MethodParamsNoInterfaceAnalyzer,
     Regulus.Remote.CodeAnalysis.NoFixedAnalysisCodeFixProvider>;
 
 namespace Regulus.Remote.CodeAnalysis.Test
@@ -26,9 +30,9 @@ namespace ConsoleApplication1
     }
 }
 ";
-            var expected = VerifyCS.Diagnostic(MethodParamsTypeAnalyzer.DiagnosticInterfaceId).WithSpan(10, 21, 10, 30).WithArguments("p1");
+            var expected = VerifyNoInterfaceCS.Diagnostic(ERRORID.RRE2.GetDiagnostic()).WithSpan(10, 21, 10, 30).WithArguments("p1");
 
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyNoInterfaceCS.VerifyAnalyzerAsync(test, expected);
         }
 
         [TestMethod]
@@ -47,9 +51,9 @@ namespace ConsoleApplication1
     }
 }
 ";
-            var expected = VerifyCS.Diagnostic(MethodParamsTypeAnalyzer.DiagnosticGenericId).WithSpan(10, 21, 10, 34).WithArguments("p1");
+            var expected = VerifyNoGenericTypeCS.Diagnostic(ERRORID.RRE3.GetDiagnostic()).WithSpan(10, 21, 10, 34).WithArguments("p1");
 
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyNoGenericTypeCS.VerifyAnalyzerAsync(test, expected);
         }
     }
 }

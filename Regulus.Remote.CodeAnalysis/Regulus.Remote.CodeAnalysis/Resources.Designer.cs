@@ -97,42 +97,6 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
-        ///   查詢類似 The parameter must not be an generic type. 的當地語系化字串。
-        /// </summary>
-        internal static string DescriptionParamNotGeneric {
-            get {
-                return ResourceManager.GetString("DescriptionParamNotGeneric", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 The parameter must not be an interface type. 的當地語系化字串。
-        /// </summary>
-        internal static string DescriptionParamNotInterface {
-            get {
-                return ResourceManager.GetString("DescriptionParamNotInterface", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 Parameter &apos;{0}&apos; must not be an generic type. 的當地語系化字串。
-        /// </summary>
-        internal static string MessageParamNotGeneric {
-            get {
-                return ResourceManager.GetString("MessageParamNotGeneric", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 Parameter &apos;{0}&apos; must not be an interface type. 的當地語系化字串。
-        /// </summary>
-        internal static string MessageParamNotInterface {
-            get {
-                return ResourceManager.GetString("MessageParamNotInterface", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查詢類似 No support for generic type &apos;{0}&apos;. 的當地語系化字串。
         /// </summary>
         internal static string MessageReturnRuleNoFixed {
@@ -198,45 +162,81 @@ namespace Regulus.Remote.CodeAnalysis {
         /// <summary>
         ///   查詢類似 The return value does not support types other than Regulus.Remote.Value or System.Void. 的當地語系化字串。
         /// </summary>
-        internal static string RR1Description {
+        internal static string RRE1Description {
             get {
-                return ResourceManager.GetString("RR1Description", resourceCulture);
+                return ResourceManager.GetString("RRE1Description", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查詢類似 No support type &apos;{0}&apos;. 的當地語系化字串。
         /// </summary>
-        internal static string RR1Message {
+        internal static string RRE1Message {
             get {
-                return ResourceManager.GetString("RR1Message", resourceCulture);
+                return ResourceManager.GetString("RRE1Message", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查詢類似 Error return value. 的當地語系化字串。
         /// </summary>
-        internal static string RR1Title {
+        internal static string RRE1Title {
             get {
-                return ResourceManager.GetString("RR1Title", resourceCulture);
+                return ResourceManager.GetString("RRE1Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 The parameter must not be an interface type. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE2Description {
+            get {
+                return ResourceManager.GetString("RRE2Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Parameter &apos;{0}&apos; must not be an interface type. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE2Message {
+            get {
+                return ResourceManager.GetString("RRE2Message", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查詢類似 Error params. 的當地語系化字串。
         /// </summary>
-        internal static string TitleParamNotGeneric {
+        internal static string RRE2Title {
             get {
-                return ResourceManager.GetString("TitleParamNotGeneric", resourceCulture);
+                return ResourceManager.GetString("RRE2Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 The parameter must not be an generic type. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE3Description {
+            get {
+                return ResourceManager.GetString("RRE3Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Parameter &apos;{0}&apos; must not be an generic type. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE3Message {
+            get {
+                return ResourceManager.GetString("RRE3Message", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查詢類似 Error params. 的當地語系化字串。
         /// </summary>
-        internal static string TitleParamNotInterface {
+        internal static string RRE3Title {
             get {
-                return ResourceManager.GetString("TitleParamNotInterface", resourceCulture);
+                return ResourceManager.GetString("RRE3Title", resourceCulture);
             }
         }
     }
