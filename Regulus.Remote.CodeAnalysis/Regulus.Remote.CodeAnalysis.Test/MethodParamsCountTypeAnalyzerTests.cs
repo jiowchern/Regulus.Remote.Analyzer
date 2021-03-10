@@ -24,7 +24,7 @@ namespace ConsoleApplication1
     }
 }
 ";
-            var expected = VerifyCS.Diagnostic(MethodParamsCountAnalyzer.DiagnosticId).WithSpan(8, 56, 8, 62).WithArguments("p6");
+            var expected = VerifyCS.Diagnostic(ERRORID.RRE4.GetDiagnostic()).WithSpan(8, 56, 8, 62).WithArguments("p6");
 
             await VerifyCS.VerifyAnalyzerAsync(test, expected);
         }

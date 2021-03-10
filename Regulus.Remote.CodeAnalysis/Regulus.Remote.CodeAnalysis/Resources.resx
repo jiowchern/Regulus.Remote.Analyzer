@@ -137,15 +137,6 @@
     <value>No support for generic type '{0}'.</value>
     <comment>Return rule not fixed</comment>
   </data>
-  <data name="rr0004-description" xml:space="preserve">
-    <value>The number of parameters cannot exceed 5.</value>
-  </data>
-  <data name="rr0004-message" xml:space="preserve">
-    <value>'{0}' is too many parameters.</value>
-  </data>
-  <data name="rr0004-title" xml:space="preserve">
-    <value>Error params.</value>
-  </data>
   <data name="rr0006-description" xml:space="preserve">
     <value>Setter is not supported.</value>
   </data>
@@ -187,5 +178,23 @@
   </data>
   <data name="RRE3Title" xml:space="preserve">
     <value>Error params.</value>
+  </data>
+  <data name="RRE4Description" xml:space="preserve">
+    <value>The number of parameters cannot exceed 5.</value>
+  </data>
+  <data name="RRE4Message" xml:space="preserve">
+    <value>'{0}' is too many parameters.</value>
+  </data>
+  <data name="RRE4Title" xml:space="preserve">
+    <value>Error params.</value>
+  </data>
+  <data name="RRE5Description" xml:space="preserve">
+    <value>The return value does not support types other than Regulus.Remote.Property or Regulus.Remote.Notifier.</value>
+  </data>
+  <data name="RRE5Message" xml:space="preserve">
+    <value>No support type '{0}'.</value>
+  </data>
+  <data name="RRE5Title" xml:space="preserve">
+    <value>Error property type.</value>
   </data>
 </root>

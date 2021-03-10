@@ -42,7 +42,7 @@ Regulus.Remote.Property<int> Property1 { get; }
     }
 }
 ";
-            var expected = VerifyFixToPropertyCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
+            var expected = VerifyFixToPropertyCS.Diagnostic(ERRORID.RRE5.GetDiagnosticId()).WithSpan(7, 9, 7, 12).WithArguments("Int32");
             await VerifyFixToPropertyCS.VerifyCodeFixAsync(test, expected, fixTest);
         }
 
@@ -69,7 +69,7 @@ Regulus.Remote.Notifier<int> Property1 { get; }
     }
 }
 ";
-            var expected = VerifyFixToNotifierCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
+            var expected = VerifyFixToNotifierCS.Diagnostic(ERRORID.RRE5.GetDiagnosticId()).WithSpan(7, 9, 7, 12).WithArguments("Int32");
             await VerifyFixToNotifierCS.VerifyCodeFixAsync(test, expected, fixTest);
         }
 
@@ -88,7 +88,7 @@ namespace ConsoleApplication1
 }
 ";
   
-            var expected = VerifyNoFixedCS.Diagnostic(PropertyReturnAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("int");
+            var expected = VerifyNoFixedCS.Diagnostic(ERRORID.RRE5.GetDiagnosticId()).WithSpan(7, 9, 7, 12).WithArguments("Int32");
             await VerifyNoFixedCS.VerifyAnalyzerAsync(test, expected);            
         }
 

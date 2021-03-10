@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using System;
 using System.Collections.Immutable;
@@ -6,33 +7,28 @@ using System.Collections.Immutable;
 namespace Regulus.Remote.CodeAnalysis
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class PropertyReturnAnalyzer : DiagnosticAnalyzer
+    public class PropertyReturnAnalyzer : InterfaceSyntaxNodeAnalyzer
     {
-        public const string DiagnosticId = "rr0005";
 
-        static readonly DiagnosticDescriptor _DiagnosticDescriptor = new DiagnosticDescriptorCreateor(DiagnosticId).DiagnosticDescriptor;
 
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(_DiagnosticDescriptor);
-
-        public override void Initialize(AnalysisContext context)
+        public PropertyReturnAnalyzer() : base(ERRORID.RRE5, SyntaxKind.PropertyDeclaration)
         {
-            context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
-            context.EnableConcurrentExecution();
-            context.RegisterSyntaxNodeAction(_Analysis, Microsoft.CodeAnalysis.CSharp.SyntaxKind.PropertyDeclaration);
         }
+        
 
-        private void _Analysis(SyntaxNodeAnalysisContext context)
+        public override bool NeedReport(SyntaxNodeAnalysisContext context, out Report report)
         {
+            report = null;
             var symbol = context.ContainingSymbol as IPropertySymbol;
             var syntax = context.Node as Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax;
 
             var attrs = symbol.ContainingSymbol.GetAttributes();
             var checkerType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));
             if (!attrs.ContainsAttributeType(checkerType))
-                return;
-            
+                return false;
+
             if (symbol.ContainingType.TypeKind != TypeKind.Interface)
-                return;
+                return false; 
 
             var retSymbol = symbol.Type as INamedTypeSymbol;
             var retSyntax = syntax.Type;
@@ -40,19 +36,18 @@ namespace Regulus.Remote.CodeAnalysis
             var propertySymbol = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Property<>));
             if (SymbolEqualityComparer.Default.Equals(retSymbol.OriginalDefinition, propertySymbol))
             {
-                return;
+                return false;
             }
 
             var notifierSymbol = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Notifier<>));
             if (SymbolEqualityComparer.Default.Equals(retSymbol.OriginalDefinition, notifierSymbol))
             {
-                return;
+                return false;
             }
-
-            
-            var diagnostic = Diagnostic.Create(_DiagnosticDescriptor, retSyntax.GetLocation() , retSymbol.Name);
-            context.ReportDiagnostic(diagnostic);
-
+            report = new Report(retSyntax.GetLocation(), retSymbol.Name);
+            return true;            
         }
+
+   
     }
 }

@@ -14,7 +14,7 @@ namespace Regulus.Remote.CodeAnalysis
     [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(PropertyReturnPropertyAnalyzerCodeFixProvider)), Shared]
     public class PropertyReturnPropertyAnalyzerCodeFixProvider : CodeFixProvider
     {
-        public override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(PropertyReturnAnalyzer.DiagnosticId);
+        public override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(ERRORID.RRE5.GetDiagnosticId());
 
         public override async Task RegisterCodeFixesAsync(CodeFixContext context)
         {

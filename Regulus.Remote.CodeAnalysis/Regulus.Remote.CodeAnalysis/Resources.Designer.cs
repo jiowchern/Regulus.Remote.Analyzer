@@ -106,33 +106,6 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
-        ///   查詢類似 The number of parameters cannot exceed 5. 的當地語系化字串。
-        /// </summary>
-        internal static string rr0004_description {
-            get {
-                return ResourceManager.GetString("rr0004-description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 &apos;{0}&apos; is too many parameters. 的當地語系化字串。
-        /// </summary>
-        internal static string rr0004_message {
-            get {
-                return ResourceManager.GetString("rr0004-message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 Error params. 的當地語系化字串。
-        /// </summary>
-        internal static string rr0004_title {
-            get {
-                return ResourceManager.GetString("rr0004-title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查詢類似 Setter is not supported. 的當地語系化字串。
         /// </summary>
         internal static string rr0006_description {
@@ -237,6 +210,60 @@ namespace Regulus.Remote.CodeAnalysis {
         internal static string RRE3Title {
             get {
                 return ResourceManager.GetString("RRE3Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 The number of parameters cannot exceed 5. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE4Description {
+            get {
+                return ResourceManager.GetString("RRE4Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 &apos;{0}&apos; is too many parameters. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE4Message {
+            get {
+                return ResourceManager.GetString("RRE4Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error params. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE4Title {
+            get {
+                return ResourceManager.GetString("RRE4Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 The return value does not support types other than Regulus.Remote.Property or Regulus.Remote.Notifier. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE5Description {
+            get {
+                return ResourceManager.GetString("RRE5Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 No support type &apos;{0}&apos;. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE5Message {
+            get {
+                return ResourceManager.GetString("RRE5Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error property type. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE5Title {
+            get {
+                return ResourceManager.GetString("RRE5Title", resourceCulture);
             }
         }
     }
