@@ -15,10 +15,12 @@ namespace Regulus.Remote.CodeAnalysis
     {
         public sealed override ImmutableArray<string> FixableDiagnosticIds
         {
-            get { return ImmutableArray.Create(FixableReturnTypeAnalyzer.DiagnosticId); }
+            
+            get { return ImmutableArray.Create(Regulus.Remote.CodeAnalysis.DiagnosticDescriptorProvider.Instance[ERRORID.RRE1].Id); }
         }
         public sealed override FixAllProvider GetFixAllProvider()
         {
+            
             // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/FixAllProvider.md for more information on Fix All Providers
             return WellKnownFixAllProviders.BatchFixer;
         }

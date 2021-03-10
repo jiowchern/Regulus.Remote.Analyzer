@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using VerifyCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVerifier<
-    Regulus.Remote.CodeAnalysis.FixableReturnTypeAnalyzer,
+    Regulus.Remote.CodeAnalysis.MethodReturnAnalyzer,
     Regulus.Remote.CodeAnalysis.FixableReturnTypeAnalysisCodeFixProvider>;
 
 namespace Regulus.Remote.CodeAnalysis.Test
@@ -77,7 +77,7 @@ namespace ConsoleApplication1
     }
 }
 ";
-            var expected = VerifyCS.Diagnostic(FixableReturnTypeAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
+            var expected = VerifyCS.Diagnostic(ERRORID.RRE1.GetDiagnosticId()).WithSpan(7, 9, 7, 12).WithArguments("Int32");
             
             await VerifyCS.VerifyAnalyzerAsync(test, expected);
         }
@@ -123,7 +123,7 @@ Regulus.Remote.Value<int> Method1();
     }
 }
 ";
-            var expected = VerifyCS.Diagnostic(FixableReturnTypeAnalyzer.DiagnosticId).WithSpan(7, 9, 7, 12).WithArguments("Int32");
+            var expected = VerifyCS.Diagnostic(ERRORID.RRE1.GetDiagnosticId()).WithSpan(7, 9, 7, 12).WithArguments("Int32");
             await VerifyCS.VerifyCodeFixAsync(test, expected, fixTest);
         }
     }
