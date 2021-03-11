@@ -15,7 +15,6 @@ using VerifyFixToNotifierCS = Regulus.Remote.CodeAnalysis.Test.CSharpCodeFixVeri
 
 namespace Regulus.Remote.CodeAnalysis.Test
 {
-
     [TestClass]
     public class PropertyReturnAnalyzerTests
     {

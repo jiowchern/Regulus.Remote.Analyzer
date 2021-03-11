@@ -266,5 +266,59 @@ namespace Regulus.Remote.CodeAnalysis {
                 return ResourceManager.GetString("RRE6Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查詢類似 Interface type is not supported. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE7Description {
+            get {
+                return ResourceManager.GetString("RRE7Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Interface type &apos;{0}&apos; is not supported. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE7Message {
+            get {
+                return ResourceManager.GetString("RRE7Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error property. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE7Title {
+            get {
+                return ResourceManager.GetString("RRE7Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Only interface tyoe. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE8Description {
+            get {
+                return ResourceManager.GetString("RRE8Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Type &apos;{0}&apos; is not supported. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE8Message {
+            get {
+                return ResourceManager.GetString("RRE8Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error property. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE8Title {
+            get {
+                return ResourceManager.GetString("RRE8Title", resourceCulture);
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@
         RRE5,
         RRE6,
         RRE7,
+        RRE8,
     }
 
     public static class ERRORIDExtensions

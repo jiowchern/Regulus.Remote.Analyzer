@@ -10,15 +10,10 @@ namespace Regulus.Remote.CodeAnalysis
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class MethodParamsCountAnalyzer : InterfaceSyntaxNodeAnalyzer
     {
-        
 
         public MethodParamsCountAnalyzer() : base(ERRORID.RRE4, SyntaxKind.MethodDeclaration)
         {
         }
-
-        
-
-        
 
         public override bool NeedReport(SyntaxNodeAnalysisContext context, out Report report)
         {
