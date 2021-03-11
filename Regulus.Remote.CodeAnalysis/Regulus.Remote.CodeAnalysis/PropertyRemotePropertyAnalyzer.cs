@@ -1,13 +1,11 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
-using System;
 using System.Collections.Immutable;
 using System.Linq;
 
 namespace Regulus.Remote.CodeAnalysis
 {
-
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class PropertyRemotePropertyAnalyzer : InterfaceSyntaxNodeAnalyzer
     {
