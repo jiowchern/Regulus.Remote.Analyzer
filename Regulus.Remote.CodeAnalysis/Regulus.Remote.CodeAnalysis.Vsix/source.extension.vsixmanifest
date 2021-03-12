@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Regulus.Remote.CodeAnalysis.ec613002-b917-41df-99d5-8775aeb2a4b6" Version="1.0" Language="en-US" Publisher="User"/>
+    <Identity Id="Regulus.Remote.CodeAnalysis.ec613002-b917-41df-99d5-8775aeb2a4b6" Version="0.1.8.1" Language="en-US" Publisher="jc"/>
     <DisplayName>Regulus.Remote.CodeAnalysis</DisplayName>
-    <Description xml:space="preserve">This is a sample diagnostic extension for the .NET Compiler Platform ("Roslyn").</Description>
+    <Description xml:space="preserve">A syntax checking aid when developing projects with Regulus.Remote.</Description>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,)" />

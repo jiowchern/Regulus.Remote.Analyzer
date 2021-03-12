@@ -27,12 +27,12 @@
     <StartAction>Program</StartAction>
     <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
     <StartArguments>/rootsuffix $(VSSDKTargetPlatformRegRootSuffix)</StartArguments>
-    <RepositoryUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis</RepositoryUrl>
+    <RepositoryUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis</PackageProjectUrl>
     <Authors>jc</Authors>
     <Company />
     <Product />
-    <Description>a syntax checking aid when developing projects with Regulus.Remote.</Description>
+    <Description>A syntax checking aid when developing projects with Regulus.Remote.</Description>
   </PropertyGroup>
 
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />

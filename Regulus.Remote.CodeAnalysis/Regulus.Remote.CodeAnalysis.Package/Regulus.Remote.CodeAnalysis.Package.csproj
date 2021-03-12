@@ -10,19 +10,23 @@
   <PropertyGroup>
     <PackageId>Regulus.Remote.CodeAnalysis</PackageId>
     <PackageVersion>1.0.0.0</PackageVersion>
-    <Authors>User</Authors>
+    <Authors>jc</Authors>
     <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
-    <PackageProjectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis</PackageProjectUrl>
     <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
-    <RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>
+    <RepositoryUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis.git</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>Regulus.Remote.CodeAnalysis</Description>
     <PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>
     <Copyright>Copyright</Copyright>
-    <PackageTags>Regulus.Remote.CodeAnalysis, analyzers</PackageTags>
+    <PackageTags>Regulus.Remote.CodeAnalysis, analyzers, Regulus.Remote</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
 
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
+
+    <Company></Company>
+
+    <Version>0.1.8.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
