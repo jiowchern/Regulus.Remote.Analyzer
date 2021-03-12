@@ -4,7 +4,7 @@ This is an extension for **Visual Studio 2019**, a syntax checking aid when deve
 
 ## Usage
 Add the ```Regulus.Remote.Attributes.SyntaxHelper``` attribute to the protocol interface.
-```cssharp
+```csharp
 namespace Demo
 {
     [Regulus.Remote.Attributes.SyntaxHelper]
