@@ -56,12 +56,21 @@ namespace Regulus.Remote.CodeAnalysis
             }
         }
 
-        private bool _NoInterface(SyntaxNodeAnalysisContext context)
+        private static bool _NoInterface(SyntaxNodeAnalysisContext context)
         {
             return context.ContainingSymbol.ContainingType.TypeKind != TypeKind.Interface;                
         }
+        public static bool IsInterfaceHelper(SyntaxNodeAnalysisContext context)
+        {
+            if (_NoHelp(context))
+                return false;
 
-        private bool _NoHelp(SyntaxNodeAnalysisContext context)
+            if (_NoInterface(context))
+                return false;
+
+            return true;
+        }
+        private static  bool _NoHelp(SyntaxNodeAnalysisContext context)
         {
             var parentSymbol = context.ContainingSymbol.ContainingType;
             var helperType = context.Compilation.GetTypeBySystemType(typeof(Regulus.Remote.Attributes.SyntaxHelper));

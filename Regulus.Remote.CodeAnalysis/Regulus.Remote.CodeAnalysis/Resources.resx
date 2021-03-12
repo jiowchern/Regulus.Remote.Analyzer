@@ -137,6 +137,15 @@
     <value>No support for generic type '{0}'.</value>
     <comment>Return rule not fixed</comment>
   </data>
+  <data name="RRE10Description" xml:space="preserve">
+    <value>Interface type is not supported.</value>
+  </data>
+  <data name="RRE10Message" xml:space="preserve">
+    <value>Type '{0}' cannot be an interface.</value>
+  </data>
+  <data name="RRE10Title" xml:space="preserve">
+    <value>Error event.</value>
+  </data>
   <data name="RRE1Description" xml:space="preserve">
     <value>The return value does not support types other than Regulus.Remote.Value or System.Void.</value>
     <comment>Return rule</comment>
@@ -214,5 +223,14 @@
   </data>
   <data name="RRE8Title" xml:space="preserve">
     <value>Error property.</value>
+  </data>
+  <data name="RRE9Description" xml:space="preserve">
+    <value>Events only support the following types: System.Action,System.Action&lt;T&gt; ,System.Action,System.Action&lt;T1,T2&gt; , System.Action,System.Action&lt;T1,T2,T3&gt; System.Action,System.Action&lt;T1,T2,T3,T4&gt;.</value>
+  </data>
+  <data name="RRE9Message" xml:space="preserve">
+    <value>Events only support the following types: System.Action,System.Action&lt;T&gt; ,System.Action,System.Action&lt;T1,T2&gt; , System.Action,System.Action&lt;T1,T2,T3&gt; System.Action,System.Action&lt;T1,T2,T3,T4&gt;.</value>
+  </data>
+  <data name="RRE9Title" xml:space="preserve">
+    <value>Error event.</value>
   </data>
 </root>

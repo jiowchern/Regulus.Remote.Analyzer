@@ -106,6 +106,33 @@ namespace Regulus.Remote.CodeAnalysis {
         }
         
         /// <summary>
+        ///   查詢類似 Interface type is not supported. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE10Description {
+            get {
+                return ResourceManager.GetString("RRE10Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Type &apos;{0}&apos; cannot be an interface. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE10Message {
+            get {
+                return ResourceManager.GetString("RRE10Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error event. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE10Title {
+            get {
+                return ResourceManager.GetString("RRE10Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 The return value does not support types other than Regulus.Remote.Value or System.Void. 的當地語系化字串。
         /// </summary>
         internal static string RRE1Description {
@@ -318,6 +345,33 @@ namespace Regulus.Remote.CodeAnalysis {
         internal static string RRE8Title {
             get {
                 return ResourceManager.GetString("RRE8Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Events only support the following types: System.Action,System.Action&lt;T&gt; ,System.Action,System.Action&lt;T1,T2&gt; , System.Action,System.Action&lt;T1,T2,T3&gt; System.Action,System.Action&lt;T1,T2,T3,T4&gt;. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE9Description {
+            get {
+                return ResourceManager.GetString("RRE9Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Events only support the following types: System.Action,System.Action&lt;T&gt; ,System.Action,System.Action&lt;T1,T2&gt; , System.Action,System.Action&lt;T1,T2,T3&gt; System.Action,System.Action&lt;T1,T2,T3,T4&gt;. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE9Message {
+            get {
+                return ResourceManager.GetString("RRE9Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Error event. 的當地語系化字串。
+        /// </summary>
+        internal static string RRE9Title {
+            get {
+                return ResourceManager.GetString("RRE9Title", resourceCulture);
             }
         }
     }

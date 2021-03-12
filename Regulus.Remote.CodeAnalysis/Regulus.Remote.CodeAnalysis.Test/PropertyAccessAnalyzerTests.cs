@@ -23,19 +23,8 @@ namespace ConsoleApplication1
     }
 }
 ";
-            var fixTest = @"
-namespace ConsoleApplication1
-{
-    [Regulus.Remote.Attributes.SyntaxHelper()]
-    public interface IFoo
-    {       
-        Regulus.Remote.Property<int> Property1 { get; }
-    }
-}
-";
-
-            var expected = VerifyFixRemoveCS.Diagnostic(ERRORID.RRE6.GetDiagnosticId()).WithSpan(7, 55, 7, 59).WithArguments("set");
-            //await VerifyFixRemoveCS.VerifyCodeFixAsync(test, expected, fixTest);
+            
+            var expected = VerifyFixRemoveCS.Diagnostic(ERRORID.RRE6.GetDiagnosticId()).WithSpan(7, 55, 7, 59).WithArguments("set");            
             await VerifyFixRemoveCS.VerifyAnalyzerAsync(test, expected);
         }
     }
