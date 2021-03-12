@@ -6,7 +6,7 @@
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>Regulus.Remote.CodeAnalysis.Vsix</RootNamespace>
     <AssemblyName>Regulus.Remote.CodeAnalysis.Vsix</AssemblyName>
-    <Version>0.1.8.0</Version>
+    <Version>0.1.8.1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -32,6 +32,7 @@
     <Authors>jc</Authors>
     <Company />
     <Product />
+    <Description>a syntax checking aid when developing projects with Regulus.Remote.</Description>
   </PropertyGroup>
 
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
