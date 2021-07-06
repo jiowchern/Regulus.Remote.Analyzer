@@ -5,8 +5,11 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>Regulus.Remote.CodeAnalysis.Vsix</RootNamespace>
-    <AssemblyName>Regulus.Remote.CodeAnalysis.Vsix</AssemblyName>
-    <Version>0.1.8.1</Version>
+    <AssemblyName>Regulus.Remote.CodeAnalysis.Vsix</AssemblyName>    
+    <Version>0.1.9.1</Version>    
+    <PackageProjectUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis</PackageProjectUrl>
+    <Authors>jc</Authors>
+  
   </PropertyGroup>
 
   <PropertyGroup>

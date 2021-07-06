@@ -15,3 +15,6 @@ namespace Demo
 }
 ```
 
+## Download
+[Link](https://marketplace.visualstudio.com/items?itemName=jiowchern.regulus-remote-codeanalysis)
+

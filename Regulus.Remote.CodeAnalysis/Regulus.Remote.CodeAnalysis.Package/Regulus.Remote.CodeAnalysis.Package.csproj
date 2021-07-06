@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <PackageId>Regulus.Remote.CodeAnalysis</PackageId>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageVersion>0.0.0.1</PackageVersion>
     <Authors>jc</Authors>
     <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jiowchern/Regulus.Remote.CodeAnalysis</PackageProjectUrl>
@@ -26,7 +26,7 @@
 
     <Company></Company>
 
-    <Version>0.1.8.1</Version>
+    <Version>0.1.9.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
